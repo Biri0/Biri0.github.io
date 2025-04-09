@@ -1,14 +1,27 @@
+:root {
+    --foreground-color: #0f0;
+    --background-color: #000;
+}
+
 #shell > p::before,
 div:has(> input)::before {
     content: "$ ";
-}
-
-body {
-    height: 100vh;
 }
 
 input,
 input:focus {
     border: none;
     outline: none;
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+
+#shell {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 5px;
+    height: 100vh;
+    margin: 0;
 }
