@@ -1,36 +1,45 @@
 main();
 
+function addShellInput(shell) {
+  let input_box = document.createElement("div");
+  let input = document.createElement("input");
+  input_box.appendChild(input);
+  shell.appendChild(input_box);
+  document.querySelector("input").focus();
+  return input;
+}
+
 async function main() {
   let body = document.querySelector("body");
   let shell = document.querySelector("#shell");
-  let input = document.createElement("p");
-  let text = "";
 
-  await execute("help", shell);
-  input.textContent = "|";
-  shell.appendChild(input);
+  shell.appendChild(await execute("help", shell));
+
+  let input = addShellInput(shell);
+
+  document.querySelector("html").addEventListener("click", function () {
+    document.querySelector("input").focus();
+  });
 
   body.addEventListener("keydown", function (event) {
-    if (event.key.length === 1) {
-      text += event.key;
-    } else {
-      switch (event.key) {
-        case "Enter":
-          execute(text, shell).then(() => {
-            input.textContent = text;
-            text = "";
-            input = document.createElement("p");
-            shell.appendChild(input);
-            input.textContent = "|";
-          });
-          break;
-        case "Backspace":
-          text = text.slice(0, -1);
-          break;
-      }
-    }
+    if (event.key == "Enter") {
+      let prev_input = document.querySelector("input");
+      let text = prev_input.value;
 
-    input.textContent = text + "|";
+      execute(text).then((output) => {
+        prev_input.remove();
+
+        let prev_command = document.createElement("p");
+        prev_command.textContent = text;
+        shell.appendChild(prev_command);
+
+        shell.appendChild(output);
+
+        addShellInput(shell);
+
+        document.querySelector("input").focus();
+      });
+    }
   });
 }
 
@@ -76,7 +85,7 @@ async function execute(command) {
     );
   }
 
-  shell.appendChild(output);
+  return output;
 }
 
 function md2html(text) {
