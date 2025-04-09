@@ -52,21 +52,31 @@ async function main() {
 }
 
 async function execute(command) {
+  function changeLang(lang) {
+    let success = document.createElement("p");
+    success.textContent =
+      document.documentElement.lang == lang
+        ? `Warning: the language was already set to '${lang}'`
+        : `Language changed to '${lang}'`;
+    output.appendChild(success);
+    document.documentElement.lang = lang;
+  }
+
   let output = document.createElement("div");
   let cmd = command.split(" ");
 
   if (cmd[0] == "lang") {
     switch (cmd[1]) {
       case "it":
-        document.documentElement.lang = "it";
+        changeLang("it");
         break;
       case "en":
-        document.documentElement.lang = "en";
+        changeLang("en");
         break;
       default:
         let error = document.createElement("p");
         error.textContent = cmd[1]
-          ? `Error: ${cmd[1]} not a valid language`
+          ? `Error: '${cmd[1]}' is not a valid language`
           : `Error: lang requires a language (it/en)`;
         output.appendChild(error);
     }
