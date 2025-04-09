@@ -9,6 +9,12 @@ function addShellInput(shell) {
   return input;
 }
 
+function inputLowerCase(input) {
+  input.addEventListener("input", function (event) {
+    input.value = input.value.toLowerCase();
+  });
+}
+
 async function main() {
   let body = document.querySelector("body");
   let shell = document.querySelector("#shell");
@@ -16,6 +22,7 @@ async function main() {
   shell.appendChild(await execute("help", shell));
 
   let input = addShellInput(shell);
+  inputLowerCase(input);
 
   document.querySelector("html").addEventListener("click", function () {
     document.querySelector("input").focus();
@@ -35,7 +42,8 @@ async function main() {
 
         shell.appendChild(output);
 
-        addShellInput(shell);
+        input = addShellInput(shell);
+        inputLowerCase(input);
 
         document.querySelector("input").focus();
       });
