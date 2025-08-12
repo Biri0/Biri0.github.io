@@ -37,6 +37,12 @@
                 border-left: 4px solid #27ae60;
                 margin: 20px 0;
             }
+            .warning {
+                background-color: #fff3cd;
+                padding: 15px;
+                border-left: 4px solid #ffc107;
+                margin: 20px 0;
+            }
             .contact {
                 background-color: #f8f9fa;
                 padding: 15px;
@@ -55,40 +61,95 @@
             <p class="date">Ultimo aggiornamento: Dicembre 2024</p>
 
             <div class="highlight">
-                <strong>In sintesi:</strong> Denaro è un'app completamente
-                offline. Non raccogliamo, trasmettiamo o condividiamo alcun dato
-                personale. Tutti i tuoi dati finanziari rimangono esclusivamente
-                sul tuo dispositivo.
+                <strong>In sintesi:</strong> Denaro è un'app principalmente
+                offline per la gestione delle finanze. Non raccogliamo i tuoi
+                dati finanziari personali. L'app mostra pubblicità tramite
+                Google AdMob, che può raccogliere alcuni dati per personalizzare
+                gli annunci secondo le loro politiche.
             </div>
 
             <h2>1. Chi siamo</h2>
             <p>
                 Denaro è un'applicazione mobile per la gestione delle finanze
-                personali progettata per funzionare completamente offline. L'app
-                è sviluppata con l'obiettivo di garantire la massima privacy e
-                sicurezza dei dati degli utenti.
+                personali progettata per funzionare principalmente offline.
+                L'app è sviluppata con l'obiettivo di garantire la massima
+                privacy dei dati finanziari degli utenti.
             </p>
 
-            <h2>2. Dati che NON raccogliamo</h2>
+            <h2>2. Dati che NON raccogliamo noi</h2>
             <p>
-                Denaro è progettata per essere completamente offline. Non
-                raccogliamo, trasmettiamo, condividiamo o vendiamo:
+                Denaro non raccoglie, trasmette, condivide o vende direttamente:
             </p>
             <ul>
                 <li>Informazioni finanziarie (bilanci, transazioni, bucket)</li>
                 <li>Dati personali identificabili</li>
                 <li>Informazioni di utilizzo dell'app</li>
-                <li>Dati di localizzazione</li>
-                <li>Informazioni del dispositivo</li>
+                <li>Dati di localizzazione precisa</li>
+                <li>Informazioni del dispositivo dettagliate</li>
                 <li>Dati biometrici o PIN di sicurezza</li>
                 <li>Preferenze linguistiche o altre impostazioni</li>
             </ul>
 
-            <h2>3. Dove vengono archiviati i tuoi dati</h2>
+            <h2>3. Pubblicità e Google AdMob</h2>
+            <div class="warning">
+                <strong>Importante:</strong> Denaro utilizza Google AdMob per
+                mostrare pubblicità. AdMob può raccogliere alcuni dati secondo
+                le proprie politiche sulla privacy.
+            </div>
             <p>
-                Tutti i dati che inserisci in Denaro vengono archiviati
-                esclusivamente:
+                Per finanziare lo sviluppo dell'app, utilizziamo Google AdMob
+                che può raccogliere:
             </p>
+            <ul>
+                <li>Identificatori pubblicitari (Advertising ID)</li>
+                <li>Informazioni sul dispositivo (modello, versione OS)</li>
+                <li>Dati di utilizzo dell'app per scopi pubblicitari</li>
+                <li>Informazioni di rete e connessione</li>
+                <li>
+                    Dati di localizzazione approssimativa (per annunci
+                    geo-localizzati)
+                </li>
+            </ul>
+            <p>
+                Questi dati sono gestiti direttamente da Google secondo la loro
+                <a href="https://policies.google.com/privacy" target="_blank"
+                    >Privacy Policy</a
+                >
+                e le
+                <a
+                    href="https://support.google.com/admob/answer/6128543"
+                    target="_blank"
+                    >Politiche AdMob</a
+                >.
+            </p>
+
+            <h2>4. Controllo della pubblicità</h2>
+            <p>Puoi controllare la personalizzazione degli annunci:</p>
+            <ul>
+                <li>
+                    <strong>Android:</strong> Impostazioni > Google > Annunci >
+                    Disattiva personalizzazione annunci
+                </li>
+                <li>
+                    <strong>iOS:</strong> Impostazioni > Privacy e sicurezza >
+                    Pubblicità Apple > Personalizzazione annunci
+                </li>
+                <li>
+                    <strong>Ripristino ID pubblicità:</strong> puoi reimpostare
+                    il tuo advertising ID dalle impostazioni del dispositivo
+                </li>
+            </ul>
+            <p>
+                Per maggiori informazioni visita:
+                <a
+                    href="https://support.google.com/ads/answer/2662922"
+                    target="_blank"
+                    >Come controllare gli annunci che vedi</a
+                >
+            </p>
+
+            <h2>5. Dove vengono archiviati i tuoi dati</h2>
+            <p>I tuoi dati finanziari vengono archiviati esclusivamente:</p>
             <ul>
                 <li>
                     <strong>Sul tuo dispositivo locale</strong> in un database
@@ -105,11 +166,11 @@
             </ul>
             <p>
                 Non utilizziamo server cloud, servizi di backup automatici o
-                database remoti.
+                database remoti per i dati finanziari.
             </p>
 
-            <h2>4. Sicurezza dei dati</h2>
-            <p>I tuoi dati sono protetti attraverso:</p>
+            <h2>6. Sicurezza dei dati</h2>
+            <p>I tuoi dati finanziari sono protetti attraverso:</p>
             <ul>
                 <li>
                     <strong>Crittografia del database:</strong> il database
@@ -120,16 +181,16 @@
                     biometrica gestiti esclusivamente dal sistema operativo
                 </li>
                 <li>
-                    <strong>Isolamento dell'app:</strong> i dati sono
+                    <strong>Isolamento dell'app:</strong> i dati finanziari sono
                     accessibili solo dall'app Denaro sul tuo dispositivo
                 </li>
                 <li>
-                    <strong>Nessuna trasmissione di rete:</strong> l'app non
-                    invia mai dati via internet
+                    <strong>Trasmissione limitata:</strong> solo i dati
+                    pubblicitari vengono trasmessi ad AdMob
                 </li>
             </ul>
 
-            <h2>5. Funzionalità di sicurezza opzionali</h2>
+            <h2>7. Funzionalità di sicurezza opzionali</h2>
             <p>L'app offre funzionalità di sicurezza opzionali:</p>
             <ul>
                 <li>
@@ -145,27 +206,65 @@
                 Questi dati di sicurezza non vengono mai trasmessi o condivisi.
             </p>
 
-            <h2>6. Autorizzazioni dell'app</h2>
-            <p>Denaro richiede solo le autorizzazioni minime necessarie:</p>
+            <h2>8. Autorizzazioni dell'app</h2>
+            <p>Denaro richiede le seguenti autorizzazioni:</p>
             <ul>
                 <li>
                     <strong>Archiviazione locale:</strong> per salvare i dati
                     finanziari sul dispositivo
                 </li>
                 <li>
+                    <strong>Accesso a internet:</strong> necessario per mostrare
+                    gli annunci pubblicitari
+                </li>
+                <li>
                     <strong>Autenticazione biometrica (opzionale):</strong> se
                     scegli di attivare questa funzionalità
                 </li>
             </ul>
+
+            <h2>9. Servizi di terze parti</h2>
+            <p>Denaro integra i seguenti servizi di terze parti:</p>
+            <ul>
+                <li>
+                    <strong>Google AdMob:</strong> per la pubblicità (soggetto
+                    alle politiche Google)
+                </li>
+            </ul>
             <p>
-                Non richiediamo accesso a contatti, fotocamera, microfono,
-                posizione o altri dati sensibili.
+                Non utilizziamo altri servizi di analytics o tracciamento oltre
+                a quelli necessari per la pubblicità.
             </p>
 
-            <h2>7. Backup e sincronizzazione</h2>
+            <h2>10. Diritti dell'utente</h2>
+            <p>Per i tuoi dati finanziari hai sempre il controllo completo:</p>
+            <ul>
+                <li>
+                    <strong>Accesso:</strong> tutti i tuoi dati finanziari sono
+                    visibili nell'app
+                </li>
+                <li>
+                    <strong>Modifica:</strong> puoi modificare o eliminare
+                    qualsiasi dato direttamente nell'app
+                </li>
+                <li>
+                    <strong>Cancellazione:</strong> disinstallando l'app rimuovi
+                    tutti i dati finanziari associati
+                </li>
+                <li>
+                    <strong>Portabilità:</strong> i tuoi dati finanziari
+                    rimangono sul tuo dispositivo
+                </li>
+            </ul>
+            <p>
+                Per i dati pubblicitari, fai riferimento ai controlli Google
+                AdMob menzionati nella sezione 4.
+            </p>
+
+            <h2>11. Backup e sincronizzazione</h2>
             <p>
                 Denaro non offre funzionalità di backup cloud o sincronizzazione
-                automatica. Sei responsabile del backup dei tuoi dati
+                automatica per i dati finanziari. Sei responsabile del backup
                 attraverso:
             </p>
             <ul>
@@ -177,49 +276,15 @@
                 </li>
             </ul>
 
-            <h2>8. Servizi di terze parti</h2>
-            <p>
-                Denaro non integra servizi di analytics, pubblicità o altri
-                servizi di terze parti che potrebbero raccogliere dati. L'app è
-                completamente autonoma.
-            </p>
-
-            <h2>9. Diritti dell'utente</h2>
-            <p>
-                Poiché non raccogliamo dati personali, hai sempre il controllo
-                completo:
-            </p>
+            <h2>12. Trasferimento di dati</h2>
+            <p>I dati pubblicitari possono essere trasferiti e processati:</p>
             <ul>
-                <li>
-                    <strong>Accesso:</strong> tutti i tuoi dati sono visibili
-                    nell'app
-                </li>
-                <li>
-                    <strong>Modifica:</strong> puoi modificare o eliminare
-                    qualsiasi dato direttamente nell'app
-                </li>
-                <li>
-                    <strong>Cancellazione:</strong> disinstallando l'app rimuovi
-                    tutti i dati associati
-                </li>
-                <li>
-                    <strong>Portabilità:</strong> i tuoi dati rimangono sul tuo
-                    dispositivo
-                </li>
+                <li>Sui server di Google (ubicati in vari paesi)</li>
+                <li>Secondo le normative di trasferimento dati di Google</li>
+                <li>Con le protezioni previste dalle politiche Google</li>
             </ul>
 
-            <h2>10. Modifiche a questa Privacy Policy</h2>
-            <p>
-                Eventuali modifiche a questa privacy policy saranno comunicate
-                attraverso:
-            </p>
-            <ul>
-                <li>Aggiornamenti dell'app negli store</li>
-                <li>Notifiche nell'app (se implementate)</li>
-                <li>Pubblicazione della versione aggiornata</li>
-            </ul>
-
-            <h2>11. Conformità normativa</h2>
+            <h2>13. Conformità normativa</h2>
             <p>Denaro è progettata per essere conforme a:</p>
             <ul>
                 <li>
@@ -232,25 +297,46 @@
                 <li><strong>Altre normative sulla privacy</strong></li>
             </ul>
             <p>
-                La conformità è facilitata dal fatto che non raccogliamo dati
-                personali.
+                Google AdMob ha le proprie certificazioni di conformità
+                normativa.
             </p>
 
+            <h2>14. Modifiche a questa Privacy Policy</h2>
+            <p>
+                Eventuali modifiche a questa privacy policy saranno comunicate
+                attraverso:
+            </p>
+            <ul>
+                <li>Aggiornamenti dell'app negli store</li>
+                <li>Notifiche nell'app (se implementate)</li>
+                <li>Pubblicazione della versione aggiornata</li>
+            </ul>
+
             <div class="contact">
-                <h2>12. Contatti</h2>
+                <h2>15. Contatti</h2>
                 <p>
                     Per domande riguardo questa privacy policy o l'app Denaro,
                     puoi contattarci tramite:
                 </p>
                 <ul>
-                    <li>Email: marianorief@gmail.com</li>
+                    <li>Email: [inserire email di contatto]</li>
+                    <li>GitHub: [inserire link repository se pubblico]</li>
                 </ul>
+                <p>
+                    Per questioni relative alla pubblicità, contatta
+                    direttamente
+                    <a
+                        href="https://support.google.com/ads/contact/abg_afc"
+                        target="_blank"
+                        >Google AdMob Support</a
+                    >.
+                </p>
             </div>
 
             <div class="highlight">
-                <strong>Ricorda:</strong> Denaro è progettata per garantire la
-                tua privacy al 100%. I tuoi dati finanziari non lasciano mai il
-                tuo dispositivo.
+                <strong>Ricorda:</strong> I tuoi dati finanziari non lasciano
+                mai il tuo dispositivo. Solo i dati pubblicitari sono gestiti da
+                Google AdMob secondo le loro politiche.
             </div>
         </div>
     </body>
