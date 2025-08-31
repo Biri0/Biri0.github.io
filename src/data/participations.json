@@ -1,0 +1,37 @@
+{
+  "participations": [
+    {
+      "id": "olicyber",
+      "name": {
+        "en": "Olicyber",
+        "it": "Olicyber"
+      },
+      "url": "https://olicyber.it/edizioni/2024",
+      "entries": [
+        { "year": 2024, "rank": 60 },
+        { "year": 2023, "rank": 47 },
+        { "year": 2022, "rank": 49 }
+      ]
+    },
+    {
+      "id": "olinfo",
+      "name": {
+        "en": "Olinfo",
+        "it": "Olinfo"
+      },
+      "url": "https://stats.olinfo.it/contestant/fba667efcdca42bb5ba3ead728da1985",
+      "entries": [
+        {
+          "year": 2023,
+          "rank": 66,
+          "url": "https://stats.olinfo.it/contest/2023"
+        },
+        {
+          "year": 2022,
+          "rank": 81,
+          "url": "https://stats.olinfo.it/contest/2022"
+        }
+      ]
+    }
+  ]
+}

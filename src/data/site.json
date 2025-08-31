@@ -1,0 +1,30 @@
+{
+  "title": "Mariano Riefolo",
+  "description": {
+    "en": "Computer Science student",
+    "it": "Studente di Informatica"
+  },
+  "email": "me@rfmariano.it",
+  "contactEmail": "me@rfmariano.it",
+  "github": "https://github.com/Biri0/",
+  "url": "https://rfmariano.it",
+  "favicon": "/favicon.svg",
+  "themeColor": "#071024",
+  "defaultLanguage": "en",
+  "languages": ["en", "it"],
+  "seo": {
+    "image": "https://rfmariano.it/me.jpeg"
+  },
+  "bio": {
+    "en": "Computer Science student focused on building personal projects, especially mobile apps. I develop and maintain Denaro and Dialettario. Open to job opportunities; use the contact me button to reach me.",
+    "it": "Studente di Informatica concentrato nello sviluppo di progetti personali, in particolare app mobile. Sviluppo e mantengo Denaro e Dialettario. Interessato a opportunità di lavoro; usa il pulsante Contattami per scrivermi."
+  },
+  "techStack": {
+    "summary": ["Project-focused — see projects"],
+    "byProject": {
+      "Denaro": ["Expo", "React Native", "Offline-first"],
+      "PplRate": ["Offline-first", "SQLCipher", "Privacy-first"],
+      "Dialettario": ["T3 stack", "Next.js", "Expo"]
+    }
+  }
+}

@@ -1,0 +1,249 @@
+---
+import PrivacyLayout from "../../components/PrivacyLayout.astro";
+---
+
+<PrivacyLayout
+    title="Privacy Policy - Denaro App"
+    appName="Denaro"
+    lastUpdated="31 agosto 2025"
+    accentColor="#3498db"
+>
+    <div class="highlight">
+        <strong>In summary:</strong> Denaro is a primarily offline finance management
+        app. We do not collect your personal financial data. The app displays advertising
+        through Google AdMob, which may collect some data to personalize ads according
+        to their policies.
+    </div>
+
+    <div class="warning">
+        <strong>Important:</strong> Denaro uses Google AdMob to display advertisements.
+        AdMob may collect some data according to their own privacy policies.
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>
+        Denaro is a mobile application for personal finance management designed
+        to work completely offline. The app is developed with the goal of
+        ensuring maximum privacy and security of user data.
+    </p>
+
+    <h2>2. Data we do NOT collect ourselves</h2>
+    <p>Denaro does not directly collect, transmit, share, or sell:</p>
+    <ul>
+        <li>Financial information (balances, transactions, buckets)</li>
+        <li>Personally identifiable information</li>
+        <li>App usage information</li>
+        <li>Location data</li>
+        <li>Device information</li>
+        <li>Biometric data or security PINs</li>
+        <li>Language preferences or other settings</li>
+    </ul>
+
+    <h2>3. Advertising and Google AdMob</h2>
+    <p>To support app development, we use Google AdMob which may collect:</p>
+    <ul>
+        <li>Advertising identifiers (Advertising ID)</li>
+        <li>Device information (model, OS version)</li>
+        <li>App usage data for advertising purposes</li>
+        <li>Network and connection information</li>
+        <li>Approximate location data (for geo-targeted ads)</li>
+    </ul>
+    <p>
+        This data is handled directly by Google according to their
+        <a href="https://policies.google.com/privacy" target="_blank"
+            >Privacy Policy</a
+        >
+        and
+        <a
+            href="https://support.google.com/admob/answer/6128543"
+            target="_blank">AdMob Policies</a
+        >.
+    </p>
+
+    <h2>4. Advertising controls</h2>
+    <p>You can control ad personalization:</p>
+    <ul>
+        <li>
+            <strong>Android:</strong> Settings > Google > Ads > Opt out of Ads Personalization
+        </li>
+        <li>
+            <strong>iOS:</strong> Settings > Privacy & Security > Apple Advertising
+            > Personalized Ads
+        </li>
+        <li>
+            <strong>Reset Advertising ID:</strong> you can reset your advertising
+            ID from device settings
+        </li>
+    </ul>
+    <p>
+        For more information visit:
+        <a href="https://support.google.com/ads/answer/2662922" target="_blank"
+            >Control the ads you see</a
+        >
+    </p>
+
+    <h2>5. Where your data is stored</h2>
+    <p>All data you enter in Denaro is stored exclusively:</p>
+    <ul>
+        <li>
+            <strong>On your local device</strong> in an encrypted SQLite database
+        </li>
+        <li>
+            <strong>In the device's secure storage</strong> for security settings
+            (PIN)
+        </li>
+        <li>
+            <strong>In the app's local storage</strong> for preferences (language,
+            theme)
+        </li>
+    </ul>
+    <p>
+        We do not use cloud servers, automatic backup services, or remote
+        databases for financial data.
+    </p>
+
+    <h2>6. Data security</h2>
+    <p>Your data is protected through:</p>
+    <ul>
+        <li>
+            <strong>Database encryption:</strong> the SQLite database is encrypted
+            with randomly generated keys
+        </li>
+        <li>
+            <strong>Local authentication:</strong> PIN and biometric authentication
+            managed exclusively by the operating system
+        </li>
+        <li>
+            <strong>App isolation:</strong> financial data is accessible only by
+            the Denaro app on your device
+        </li>
+        <li>
+            <strong>Limited transmission:</strong> only advertising data is transmitted
+            to AdMob
+        </li>
+    </ul>
+
+    <h2>7. Optional security features</h2>
+    <p>The app offers optional security features:</p>
+    <ul>
+        <li>
+            <strong>Access PIN:</strong> stored securely on the device using Expo
+            SecureStore
+        </li>
+        <li>
+            <strong>Biometric authentication:</strong> managed directly by the device's
+            operating system
+        </li>
+    </ul>
+    <p>This security data is never transmitted or shared.</p>
+
+    <h2>8. App permissions</h2>
+    <p>Denaro only requests the minimum necessary permissions:</p>
+    <ul>
+        <li>
+            <strong>Local storage:</strong> to save financial data on the device
+        </li>
+        <li>
+            <strong>Internet access:</strong> required to display advertisements
+        </li>
+        <li>
+            <strong>Biometric authentication (optional):</strong> if you choose to
+            enable this feature
+        </li>
+    </ul>
+    <p>
+        We do not request access to contacts, camera, microphone, location, or
+        other sensitive data.
+    </p>
+
+    <h2>9. Third-party services</h2>
+    <p>Denaro integrates the following third-party services:</p>
+    <ul>
+        <li>
+            <strong>Google AdMob:</strong> for advertising (subject to Google policies)
+        </li>
+    </ul>
+    <p>
+        We do not use other analytics or tracking services beyond those
+        necessary for advertising.
+    </p>
+
+    <h2>10. Backup and synchronization</h2>
+    <p>
+        Denaro does not offer cloud backup or automatic synchronization
+        features. You are responsible for backing up your data through:
+    </p>
+    <ul>
+        <li>Device backup (if supported by the operating system)</li>
+        <li>Future export tools we may add</li>
+    </ul>
+
+    <h2>11. User rights</h2>
+    <p>
+        Since we do not collect personal data, you always have complete control:
+    </p>
+    <ul>
+        <li>
+            <strong>Access:</strong> all your data is visible in the app
+        </li>
+        <li>
+            <strong>Modification:</strong> you can edit or delete any data directly
+            in the app
+        </li>
+        <li>
+            <strong>Deletion:</strong> uninstalling the app removes all associated
+            data
+        </li>
+        <li>
+            <strong>Portability:</strong> your data remains on your device
+        </li>
+    </ul>
+
+    <p>
+        For advertising data, refer to Google AdMob controls mentioned in
+        section 4.
+    </p>
+
+    <h2>12. Data transfers</h2>
+    <p>Advertising data may be transferred and processed:</p>
+    <ul>
+        <li>On Google servers (located in various countries)</li>
+        <li>According to Google's data transfer regulations</li>
+        <li>With protections provided by Google policies</li>
+    </ul>
+
+    <h2>13. Changes to this Privacy Policy</h2>
+    <p>Any changes to this privacy policy will be communicated through:</p>
+    <ul>
+        <li>App updates in the stores</li>
+        <li>In-app notifications (if implemented)</li>
+        <li>Publication of the updated version</li>
+    </ul>
+
+    <h2>14. Regulatory compliance</h2>
+    <p>Denaro is designed to comply with:</p>
+    <ul>
+        <li>
+            <strong>GDPR (General Data Protection Regulation)</strong>
+        </li>
+        <li><strong>CCPA (California Consumer Privacy Act)</strong></li>
+        <li><strong>Other privacy regulations</strong></li>
+    </ul>
+    <p>Google AdMob has its own regulatory compliance certifications.</p>
+
+    <div class="highlight">
+        <strong>Remember:</strong> Your financial data never leaves your device.
+        Only advertising data is handled by Google AdMob according to their policies.
+    </div>
+
+    <div slot="additional-contact">
+        <p>
+            For advertising-related matters, contact
+            <a
+                href="https://support.google.com/ads/contact/abg_afc"
+                target="_blank">Google AdMob Support</a
+            >
+            directly.
+        </p>
+    </div>
+</PrivacyLayout>

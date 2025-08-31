@@ -1,0 +1,102 @@
+---
+/*
+  Pagina italiana localizzata (src/pages/it/index.astro)
+  - Versione server-rendered in italiano: <html lang="it">
+  - Uses shared IndexLayout and IndexContent components
+*/
+
+import IndexLayout from "../../components/IndexLayout.astro";
+import IndexContent from "../../components/IndexContent.astro";
+
+import site from "../../data/site.json";
+import projectsData from "../../data/projects.json";
+import participationsData from "../../data/participations.json";
+
+import { getCurrentLocale, getLabels } from "../../utils/i18n.ts";
+import type {
+    ProjectData,
+    ParticipationData,
+    ProcessedProject,
+    ProcessedParticipation,
+} from "../../types/index.ts";
+
+// Get current locale and labels
+const currentLocale = getCurrentLocale(Astro.url.pathname);
+const labels = getLabels(currentLocale);
+
+const projects: ProcessedProject[] = (
+    (projectsData.projects as ProjectData[]) || []
+).map(
+    (p: ProjectData): ProcessedProject => ({
+        id: p.id,
+        title:
+            p.titles && p.titles[currentLocale]
+                ? p.titles[currentLocale]
+                : p.titles && p.titles.en
+                  ? p.titles.en
+                  : p.id,
+        desc:
+            p.descriptions && p.descriptions[currentLocale]
+                ? p.descriptions[currentLocale]
+                : p.descriptions && p.descriptions.en
+                  ? p.descriptions.en
+                  : "",
+        tech: p.tech || [],
+        repo: p.repo || "",
+        live: p.live || "",
+        play: p.play || "",
+        package: p.package || "",
+    }),
+);
+
+const participations: Record<string, ProcessedParticipation> = {};
+((participationsData.participations as ParticipationData[]) || []).forEach(
+    (p: ParticipationData) => {
+        const name =
+            p.name && p.name[currentLocale]
+                ? p.name[currentLocale]
+                : p.name && p.name.en
+                  ? p.name.en
+                  : p.id;
+
+        participations[p.id] = {
+            name,
+            url: p.url,
+            entries: (p.entries || []).sort((a, b) => b.year - a.year),
+        };
+    },
+);
+
+/**
+ * Return ordinal string for a rank number.
+ * For Italian we'll use a simple numeric + "º" suffix (adjust as needed).
+ */
+function ordinal(n: number | string) {
+    const num = Number(n) || 0;
+    return String(num) + "º";
+}
+---
+
+<IndexLayout
+    currentLocale={currentLocale}
+    title={site.title + " — " + labels.nav.home}
+    description={site.description[currentLocale] || site.description.en}
+    canonicalUrl="https://rfmariano.it/it/"
+    ogLocale="it_IT"
+    ogUrl="https://rfmariano.it/it/"
+    alternateUrls={[
+        { hreflang: "it", href: "https://rfmariano.it/it/" },
+        { hreflang: "en", href: "https://rfmariano.it/" },
+    ]}
+    site={site}
+    labels={labels}
+>
+    <IndexContent
+        site={site}
+        currentLocale={currentLocale}
+        labels={labels}
+        projects={projects}
+        participations={participations}
+        ordinalFunc={ordinal}
+    />
+</IndexLayout>

@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": { "en": "Home", "it": "Home" },
+    "projects": { "en": "Projects", "it": "Progetti" },
+    "contact": { "en": "Contact me", "it": "Contattami" },
+    "language": { "en": "Language", "it": "Lingua" }
+  },
+  "buttons": {
+    "site": { "en": "Site", "it": "Sito" },
+    "play": { "en": "Play Store", "it": "Play Store" },
+    "repo": { "en": "Repo", "it": "Repo" },
+    "email": { "en": "Email", "it": "Email" }
+  },
+  "socials": {
+    "github": { "en": "GitHub", "it": "GitHub" },
+    "goodreads": { "en": "GoodReads", "it": "GoodReads" }
+  },
+  "headings": {
+    "hero_title": {
+      "en": "Hi — I build personal projects and mobile apps",
+      "it": "Ciao — sviluppo progetti personali e app mobile"
+    },
+    "hero_subtitle": {
+      "en": "I focus on building useful projects and shipping mobile apps.",
+      "it": "Mi occupo di sviluppare progetti utili e pubblicare app mobile."
+    },
+    "selected_projects": {
+      "en": "Selected Projects",
+      "it": "Progetti selezionati"
+    },
+    "olympiad_participations": {
+      "en": "Olympiad participations",
+      "it": "Partecipazioni alle olimpiadi"
+    },
+    "olympiad_description": {
+      "en": "National programming competitions and my rankings over the years.",
+      "it": "Competizioni nazionali di programmazione e i miei piazzamenti nel corso degli anni."
+    },
+    "location": { "en": "Location", "it": "Sede" },
+    "location_value": { "en": "Remote / Europe", "it": "Remote / Europa" }
+  },
+  "project_card": {
+    "package_label": { "en": "Package", "it": "Package" },
+    "live_title": { "en": "Open site", "it": "Apri sito" },
+    "play_title": { "en": "Open on Play Store", "it": "Apri su Play Store" },
+    "repo_title": { "en": "View repository", "it": "Vedi repository" },
+    "techs_label": { "en": "Technologies", "it": "Tecnologie" }
+  },
+  "participations": {
+    "table_headers": {
+      "competition": { "en": "Competition", "it": "Competizione" },
+      "year": { "en": "Year", "it": "Anno" },
+      "rank": { "en": "Rank", "it": "Piazzamento" }
+    }
+  },
+  "footer": {
+    "built_with": { "en": "Built with Astro", "it": "Realizzato con Astro" },
+    "copyright": {
+      "en": "© {year} {title}",
+      "it": "© {year} {title}"
+    }
+  },
+  "forms": {
+    "contact_link_title": {
+      "en": "Email me",
+      "it": "Invia email"
+    }
+  },
+  "misc": {
+    "projects_list_aria": {
+      "en": "Projects list",
+      "it": "Elenco dei progetti"
+    },
+    "projects_role": {
+      "en": "list",
+      "it": "list"
+    }
+  },
+  "code_snippet": {
+    "copy": { "en": "Copy", "it": "Copia" },
+    "copied": { "en": "Copied", "it": "Copiato" },
+    "copied_clipboard": {
+      "en": "Copied to clipboard",
+      "it": "Copiato negli appunti"
+    },
+    "copy_failed": { "en": "Copy failed", "it": "Copia fallita" },
+    "nothing_to_copy": { "en": "Nothing to copy", "it": "Niente da copiare" },
+    "show_more": { "en": "Show more", "it": "Mostra altro" },
+    "show_less": { "en": "Show less", "it": "Mostra meno" },
+    "expanded_code": { "en": "Expanded code", "it": "Codice espanso" },
+    "collapsed_code_note": {
+      "en": "Collapsed code (reload page to restore server-side collapsed view)",
+      "it": "Codice compattato (ricarica la pagina per ripristinare la versione server-side)"
+    }
+  },
+  "footer_extra": {
+    "note": {
+      "en": "Built with Astro • Available for freelance & full-time roles",
+      "it": "Realizzato con Astro • Disponibile per progetti freelance e opportunità a tempo pieno"
+    },
+    "email_label": { "en": "Email", "it": "Email" },
+    "github_label": { "en": "GitHub", "it": "GitHub" }
+  }
+}

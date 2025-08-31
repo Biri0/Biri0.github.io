@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Sitemap for rfmariano.it -->
+  <url>
+    <loc>https://rfmariano.it/</loc>
+    <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://rfmariano.it/me.jpeg</image:loc>
+      <image:caption>Mariano Riefolo — University student (Computer Science)</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rfmariano.it/it/</loc>
+    <lastmod>2025-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://rfmariano.it/me.jpeg</image:loc>
+      <image:caption>Mariano Riefolo — Studente universitario (Informatica)</image:caption>
+    </image:image>
+  </url>
+</urlset>

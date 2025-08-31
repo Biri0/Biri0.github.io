@@ -1,0 +1,493 @@
+---
+/*
+  IndexContent component - Shared main content for both EN/IT index pages
+  - Renders hero section, bio, location, and projects
+  - Accepts locale-specific data as props
+*/
+
+import ProjectCard from "./ProjectCard.astro";
+import { t, type Locale } from "../utils/i18n.ts";
+import type {
+    SiteData,
+    Labels,
+    ProcessedProject,
+    ProcessedParticipation,
+    ParticipationEntry,
+} from "../types/index.ts";
+
+export interface Props {
+    site: SiteData;
+    currentLocale: Locale;
+    labels: Labels;
+    projects: ProcessedProject[];
+    participations: Record<string, ProcessedParticipation>;
+    ordinalFunc: (n: number | string) => string;
+}
+
+const { site, currentLocale, labels, projects, participations, ordinalFunc } =
+    Astro.props;
+---
+
+<main>
+    <section class="panel hero-panel" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <h1 id="hero-title" class="hero-title">
+                {labels.headings.hero_title}
+            </h1>
+            <p class="lead">{site.bio[currentLocale] || site.bio.en}</p>
+
+            <div class="hero-meta">
+                <div class="location-badge">
+                    <div class="location-label">{labels.headings.location}</div>
+                    <div class="location-value">
+                        {labels.headings.location_value}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            <h2 id="projects" class="section-title">
+                {labels.headings.selected_projects}
+            </h2>
+            <ul
+                class="projects"
+                aria-label={t("misc.projects_list_aria", currentLocale)}
+                style="list-style:none;margin:0;padding:0;"
+            >
+                {
+                    projects.map((p) => (
+                        <li role="listitem">
+                            <ProjectCard
+                                id={p.id}
+                                title={p.title}
+                                description={p.desc}
+                                tech={p.tech}
+                                repo={p.repo}
+                                live={p.live}
+                                play={p.play}
+                                labels={labels}
+                            />
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+    </section>
+
+    <aside class="panel sidebar-panel" aria-labelledby="aside-title">
+        <div class="sidebar-section">
+            <div class="sidebar-header">
+                <h3 id="aside-title" class="sidebar-title">
+                    {labels.headings.olympiad_participations}
+                </h3>
+                <p class="sidebar-description">
+                    {labels.headings.olympiad_description}
+                </p>
+            </div>
+
+            <div
+                class="olympiads-section"
+                role="region"
+                aria-label="Olympiad participations"
+            >
+                <table class="olympiads-table">
+                    <thead>
+                        <tr>
+                            <th class="table-header">
+                                {
+                                    t(
+                                        "participations.table_headers.competition",
+                                        currentLocale,
+                                    )
+                                }
+                            </th>
+                            <th class="table-header">
+                                {
+                                    t(
+                                        "participations.table_headers.year",
+                                        currentLocale,
+                                    )
+                                }
+                            </th>
+                            <th class="table-header">
+                                {
+                                    t(
+                                        "participations.table_headers.rank",
+                                        currentLocale,
+                                    )
+                                }
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            Object.entries(participations)
+                                .flatMap(([, data]) =>
+                                    (data.entries || []).map((entry) => ({
+                                        ...entry,
+                                        name: data.name,
+                                        url: entry.url || data.url,
+                                    })),
+                                )
+                                .sort((a, b) => {
+                                    // Prima per anno (decrescente)
+                                    if (a.year !== b.year) {
+                                        return b.year - a.year;
+                                    }
+                                    // Poi per nome (alfabetico)
+                                    return a.name.localeCompare(b.name);
+                                })
+                                .map((entry) => (
+                                    <tr class="table-row">
+                                        <td class="table-cell table-cell-name">
+                                            {entry.url ? (
+                                                <a
+                                                    href={entry.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="competition-link"
+                                                >
+                                                    {entry.name}
+                                                </a>
+                                            ) : (
+                                                entry.name
+                                            )}
+                                        </td>
+                                        <td class="table-cell table-cell-year">
+                                            {entry.year}
+                                        </td>
+                                        <td class="table-cell table-cell-rank">
+                                            {entry.rank
+                                                ? ordinalFunc(entry.rank)
+                                                : "Participant"}
+                                        </td>
+                                    </tr>
+                                ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="social-section">
+                <div class="social-group">
+                    <h4 class="social-title">Socials</h4>
+                    <div class="social-links">
+                        <a
+                            class="social-btn"
+                            href="https://github.com/Biri0/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={t("socials.github", currentLocale)}
+                        >
+                            <span class="social-icon">👨‍💻</span>
+                            {t("socials.github", currentLocale)}
+                        </a>
+                        <a
+                            class="social-btn"
+                            href="https://www.goodreads.com/rfmariano"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={t("socials.goodreads", currentLocale)}
+                        >
+                            <span class="social-icon">📚</span>
+                            {t("socials.goodreads", currentLocale)}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+</main>
+
+<style>
+    .hero-panel {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        background: linear-gradient(135deg, #2dd4bf, #60a5fa, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2.2rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        text-shadow:
+            0 4px 12px rgba(0, 0, 0, 0.8),
+            0 2px 4px rgba(0, 0, 0, 0.6);
+        filter: brightness(1.2) contrast(1.1);
+    }
+
+    .lead {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #d4e2ef;
+        max-width: 90%;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-meta {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 1.5rem;
+    }
+
+    .location-badge {
+        background: rgba(45, 212, 191, 0.12);
+        border: 1px solid rgba(45, 212, 191, 0.3);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(45, 212, 191, 0.1);
+        backdrop-filter: blur(8px);
+    }
+
+    .location-label {
+        font-size: 0.8rem;
+        color: #2dd4bf;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .location-value {
+        font-weight: 700;
+        color: #e6eef8;
+        margin-top: 0.25rem;
+    }
+
+    .projects-section {
+        margin-top: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        position: relative;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, #2dd4bf, #60a5fa);
+        border-radius: 1px;
+    }
+
+    .sidebar-panel {
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
+        min-width: 320px;
+    }
+
+    .sidebar-section {
+        margin-bottom: 2rem;
+    }
+
+    .sidebar-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .sidebar-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .sidebar-description {
+        font-size: 0.9rem;
+        color: #d4e2ef;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .olympiads-section {
+        margin-bottom: 2rem;
+    }
+
+    .olympiads-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-header {
+        text-align: left;
+        padding: 0.75rem;
+        background: rgba(45, 212, 191, 0.08);
+        border-bottom: 1px solid rgba(45, 212, 191, 0.15);
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #7dd3fc;
+        text-shadow: 0 0 8px rgba(125, 211, 252, 0.3);
+    }
+
+    .table-row {
+        transition: all 0.2s ease;
+    }
+
+    .table-row:hover {
+        background: rgba(45, 212, 191, 0.05);
+        transform: scale(1.005);
+    }
+
+    .table-cell {
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        font-size: 0.9rem;
+    }
+
+    .table-cell-name {
+        font-weight: 500;
+    }
+
+    .table-cell-year {
+        color: #c1ccd7;
+    }
+
+    .table-cell-rank {
+        color: #2dd4bf;
+        font-weight: 600;
+    }
+
+    .competition-link {
+        color: #7dd3fc;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        text-shadow: 0 0 8px rgba(125, 211, 252, 0.3);
+    }
+
+    .competition-link:hover {
+        color: #2dd4bf;
+        text-shadow: 0 0 12px rgba(45, 212, 191, 0.5);
+    }
+
+    .social-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .social-group {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(8px);
+    }
+
+    .social-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0 0 0.75rem 0;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .social-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 0.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        color: #e6eef8;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
+    }
+
+    .social-btn:hover {
+        background: rgba(45, 212, 191, 0.12);
+        border-color: rgba(45, 212, 191, 0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(45, 212, 191, 0.15);
+        color: #2dd4bf;
+        text-shadow: 0 0 8px rgba(45, 212, 191, 0.4);
+    }
+
+    .social-icon {
+        font-size: 1rem;
+    }
+
+    @media (max-width: 1200px) {
+        .sidebar-panel {
+            position: static;
+            min-width: auto;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        .lead {
+            font-size: 1.05rem;
+        }
+
+        .social-section {
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .social-group {
+            flex: 1;
+        }
+    }
+
+    @media (max-width: 980px) {
+        .hero-title {
+            font-size: 1.8rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+
+        .hero-meta {
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+        }
+
+        .location-badge {
+            padding: 0.6rem 0.85rem;
+        }
+
+        .location-label {
+            font-size: 0.75rem;
+        }
+    }
+</style>

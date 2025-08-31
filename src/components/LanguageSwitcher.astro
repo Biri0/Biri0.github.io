@@ -1,0 +1,105 @@
+---
+import {
+    getCurrentLocale,
+    getAlternateLocale,
+    getLocalizedUrl,
+    t,
+} from "../utils/i18n.ts";
+
+// Get current locale from URL
+const currentLocale = getCurrentLocale(Astro.url.pathname);
+const alternateLocale = getAlternateLocale(currentLocale);
+
+// Get the current path without locale prefix
+const currentPath = Astro.url.pathname
+    .replace(/^\/(en|it)\//, "/")
+    .replace(/^\/$/, "");
+const alternatePath = currentPath === "/" ? "" : currentPath;
+
+// Generate the alternate language URL
+const alternateUrl = getLocalizedUrl(alternatePath, alternateLocale);
+
+// Get localized labels
+const currentLangLabel = currentLocale === "en" ? "EN" : "IT";
+const alternateLangLabel = alternateLocale === "en" ? "EN" : "IT";
+const switchText = t("nav.language", currentLocale);
+---
+
+<div class="language-switcher">
+    <span
+        class="current-lang"
+        aria-label={`Current language: ${currentLangLabel}`}
+    >
+        {currentLangLabel}
+    </span>
+    <span class="separator">/</span>
+    <a
+        href={alternateUrl}
+        class="alternate-lang"
+        hreflang={alternateLocale}
+        aria-label={`Switch to ${alternateLangLabel}`}
+        title={`${switchText} (${alternateLangLabel})`}
+    >
+        {alternateLangLabel}
+    </a>
+</div>
+
+<style>
+    .language-switcher {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-family:
+            system-ui,
+            -apple-system,
+            sans-serif;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    .current-lang {
+        color: #374151;
+        cursor: default;
+    }
+
+    .separator {
+        color: #9ca3af;
+        user-select: none;
+    }
+
+    .alternate-lang {
+        color: #6b7280;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        cursor: pointer;
+    }
+
+    .alternate-lang:hover {
+        color: #374151;
+    }
+
+    .alternate-lang:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    /* Dark mode support (if needed) */
+    @media (prefers-color-scheme: dark) {
+        .current-lang {
+            color: #f3f4f6;
+        }
+
+        .separator {
+            color: #6b7280;
+        }
+
+        .alternate-lang {
+            color: #9ca3af;
+        }
+
+        .alternate-lang:hover {
+            color: #f3f4f6;
+        }
+    }
+</style>

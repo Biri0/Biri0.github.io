@@ -1,0 +1,344 @@
+---
+/*
+  Shared IndexLayout component to reduce code duplication between EN/IT index pages
+  - Handles common HTML structure, meta tags, and styling
+  - Accepts props for locale-specific content and metadata
+*/
+
+import { Image } from "astro:assets";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import type { Locale, SiteData, Labels, AlternateUrl } from "../types/index.ts";
+
+export interface Props {
+    currentLocale: Locale;
+    title: string;
+    description: string;
+    canonicalUrl: string;
+    ogLocale: string;
+    ogUrl: string;
+    alternateUrls: AlternateUrl[];
+    site: SiteData;
+    labels: Labels;
+}
+
+const {
+    currentLocale,
+    title,
+    description,
+    canonicalUrl,
+    ogLocale,
+    ogUrl,
+    alternateUrls,
+    site,
+    labels,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={currentLocale}>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="robots" content="index,follow" />
+        <meta name="theme-color" content="#071024" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content={ogLocale} />
+        <meta property="og:url" content={ogUrl} />
+        <meta property="og:image" content="https://rfmariano.it/me.jpeg" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="https://rfmariano.it/me.jpeg" />
+
+        <!-- Canonical and hreflang links -->
+        <link rel="canonical" href={canonicalUrl} />
+        {
+            alternateUrls.map(({ hreflang, href }) => (
+                <link rel="alternate" hreflang={hreflang} href={href} />
+            ))
+        }
+
+        <link rel="icon" type="image/jpeg" href="/me.jpeg" />
+
+        <style>
+            :root {
+                color-scheme: dark;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family:
+                    Inter,
+                    system-ui,
+                    -apple-system,
+                    "Segoe UI",
+                    Roboto,
+                    "Helvetica Neue",
+                    Arial;
+                background: #071024;
+                color: #e6eef8;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 2rem auto;
+                padding: 2rem;
+            }
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1.5rem;
+                margin-bottom: 2.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .brand {
+                display: flex;
+                gap: 1.2rem;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+                transition: transform 0.2s ease;
+            }
+            .brand:hover {
+                transform: translateY(-2px);
+                filter: brightness(1.1);
+            }
+            .logo {
+                width: 64px;
+                height: 64px;
+                border-radius: 16px;
+                border: 2px solid rgba(45, 212, 191, 0.2);
+                box-shadow: 0 8px 24px rgba(45, 212, 191, 0.1);
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .logo:hover {
+                border-color: rgba(45, 212, 191, 0.5);
+                box-shadow: 0 12px 32px rgba(45, 212, 191, 0.25);
+                transform: scale(1.05);
+            }
+            .title {
+                font-weight: 700;
+                font-size: 1.25rem;
+                background: linear-gradient(135deg, #ffffff, #7dd3fc);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                filter: brightness(1.1);
+            }
+
+            .subtitle {
+                color: #7dd3fc;
+                font-size: 1rem;
+                font-weight: 500;
+                margin-top: 0.25rem;
+                text-shadow: 0 0 8px rgba(125, 211, 252, 0.3);
+            }
+            nav {
+                display: flex;
+                gap: 0.6rem;
+                align-items: center;
+            }
+            .btn {
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                padding: 0.45rem 0.7rem;
+                border-radius: 8px;
+                color: #e6eef8;
+                text-decoration: none;
+                font-size: 0.95rem;
+                font-weight: 500;
+                transition: all 0.2s ease;
+                backdrop-filter: blur(8px);
+            }
+            .btn:hover,
+            .btn:focus {
+                background: rgba(45, 212, 191, 0.12);
+                border-color: rgba(45, 212, 191, 0.4);
+                color: #2dd4bf;
+                transform: translateY(-1px);
+                outline: none;
+                box-shadow: 0 4px 12px rgba(45, 212, 191, 0.15);
+                text-shadow: 0 0 8px rgba(45, 212, 191, 0.5);
+            }
+            main {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 3rem;
+                align-items: start;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            .panel {
+                background: linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.03),
+                    rgba(255, 255, 255, 0.01)
+                );
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                padding: 2rem;
+                margin-bottom: 1.5rem;
+                backdrop-filter: blur(12px);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            }
+            h1 {
+                margin-top: 0;
+                font-size: 1.95rem;
+            }
+            p.lead {
+                color: #9aa7b2;
+                font-size: 1.05rem;
+                margin-bottom: 1.7rem;
+            }
+            .stack {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .chip {
+                background: rgba(45, 212, 191, 0.1);
+                color: #2dd4bf;
+                padding: 0.35rem 0.8rem;
+                border-radius: 6px;
+                font-size: 0.85rem;
+            }
+            .projects {
+                display: grid;
+                gap: 1.5rem;
+            }
+            aside .block {
+                margin-bottom: 1.5rem;
+            }
+            .olympiads ul {
+                list-style: none;
+                padding: 0;
+            }
+            .olympiads li {
+                margin-bottom: 0.5rem;
+            }
+            footer {
+                margin-top: 2rem;
+                padding-top: 1rem;
+                text-align: center;
+                color: #b4c6d3;
+                font-size: 0.9rem;
+            }
+            @media (max-width: 1200px) {
+                main {
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                }
+                .sidebar-panel {
+                    order: -1;
+                }
+            }
+            @media (max-width: 980px) {
+                .container {
+                    margin: 1rem auto;
+                    padding: 1rem;
+                }
+                main {
+                    gap: 1.5rem;
+                }
+                header {
+                    flex-wrap: wrap;
+                    gap: 1rem;
+                    margin-bottom: 2rem;
+                    padding-bottom: 1rem;
+                }
+                .brand {
+                    gap: 1rem;
+                }
+                .logo {
+                    width: 56px;
+                    height: 56px;
+                }
+            }
+            @media (max-width: 768px) {
+                .container {
+                    padding: 0.75rem;
+                }
+                .title {
+                    font-size: 1.1rem;
+                }
+                .subtitle {
+                    font-size: 0.9rem;
+                }
+                footer {
+                    font-size: 0.85rem;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <a
+                    class="brand"
+                    href={currentLocale === "it" ? "/it/" : "/"}
+                    role="banner"
+                    aria-label="Site brand"
+                >
+                    <div class="logo">
+                        <Image
+                            src="/me.jpeg"
+                            alt="Mariano Riefolo"
+                            width={64}
+                            height={64}
+                            format="webp"
+                            quality={90}
+                            loading="eager"
+                            style="width: 100%; height: 100%; object-fit: cover;"
+                        />
+                    </div>
+                    <div>
+                        <div class="title">{site.title}</div>
+                        <div class="subtitle">
+                            {
+                                site.description[currentLocale] ||
+                                    site.description.en
+                            }
+                        </div>
+                    </div>
+                </a>
+                <nav aria-label="Primary">
+                    <a class="btn" href={"mailto:" + site.email}
+                        >{labels.nav.contact}</a
+                    >
+                    <div style="margin-left:0.5rem;">
+                        <LanguageSwitcher currentPath={Astro.url.pathname} />
+                    </div>
+                </nav>
+            </header>
+
+            <slot />
+
+            <footer>
+                <div>Made with ❤️ using Astro</div>
+                <div>© <span id="year">2025</span> {site.title}</div>
+            </footer>
+        </div>
+
+        <script>
+            (function () {
+                const y = document.getElementById("year");
+                if (y) y.textContent = String(new Date().getFullYear());
+            })();
+        </script>
+        <script>
+            import "/src/scripts/language-switcher.ts";
+        </script>
+    </body>
+</html>

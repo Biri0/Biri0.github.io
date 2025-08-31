@@ -1,0 +1,322 @@
+---
+/**
+ * ProjectCard.astro
+ *
+ * Reusable project card component for the developer-focused site.
+ *
+ * Props:
+ *  - id?: string
+ *  - title: string
+ *  - description?: string
+ *  - tech?: string[]
+ *  - repo?: string (link to repository)
+ *  - live?: string (link to live demo)
+ *  - target?: string (default: "_blank" for external links)
+ *  - rel?: string (default: "noopener noreferrer")
+ *
+ * Notes:
+ *  - The component uses the site's global CSS tokens (src/styles.css).
+ *  - It is accessible: the card is an anchor when linking to a resource and exposes proper ARIA labels.
+ */
+import type { Labels } from "../types/index.ts";
+
+export interface Props {
+    id?: string;
+    title: string;
+    description?: string;
+    tech?: string[];
+    repo?: string;
+    live?: string;
+    play?: string;
+    pkg?: string;
+    labels?: Labels;
+    target?: string;
+    rel?: string;
+}
+
+const {
+    id = "",
+    title = "Untitled Project",
+    description = "",
+    tech = [],
+    repo = "",
+    live = "",
+    play = "",
+    labels = null,
+    target = "_blank",
+    rel = "noopener noreferrer",
+} = Astro.props;
+---
+
+<article
+    class="card"
+    role="article"
+    aria-labelledby={id ? `${id}-title` : undefined}
+>
+    <!-- Primary link: prefer live demo, then repo, then inert (#) -->
+    {
+        (() => {
+            // Defensive: make sure the primary href is a string, otherwise fall back to "#"
+            const primaryCandidate = live || play || repo || "#";
+            const primary =
+                typeof primaryCandidate === "string" && primaryCandidate.trim()
+                    ? primaryCandidate
+                    : "#";
+            const primaryTarget = primary === "#" ? undefined : target;
+            const primaryRel = primary === "#" ? undefined : rel;
+
+            return (
+                <div class="card-main">
+                    <h3 id={id ? `${id}-title` : undefined}>{title}</h3>
+                    {description ? <p>{description}</p> : null}
+
+                    {tech && tech.length > 0 ? (
+                        <ul
+                            class="techs"
+                            role="list"
+                            aria-label={
+                                labels &&
+                                labels.project_card &&
+                                labels.project_card.techs_label
+                                    ? labels.project_card.techs_label
+                                    : "Technologies"
+                            }
+                        >
+                            {tech.map((t) => (
+                                <li class="tech" role="listitem">
+                                    {t}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : null}
+                </div>
+            );
+        })()
+    }
+
+    <!-- Actions: explicit links for repo / live if both provided -->
+    <div class="card-actions" aria-hidden={!(repo || live || play)}>
+        {
+            (() => {
+                // Defensive: ensure hrefs are strings before using them
+                const safeLive =
+                    typeof live === "string" && live.trim() ? live : null;
+                const safePlay =
+                    typeof play === "string" && play.trim() ? play : null;
+                const safeRepo =
+                    typeof repo === "string" && repo.trim() ? repo : null;
+
+                return (
+                    <>
+                        {safeLive ? (
+                            <a
+                                class="btn"
+                                href={safeLive}
+                                target={target}
+                                rel={rel}
+                                title={
+                                    labels &&
+                                    labels.project_card &&
+                                    labels.project_card.live_title
+                                        ? `${labels.project_card.live_title}: ${title}`
+                                        : `Open site: ${title}`
+                                }
+                            >
+                                {labels && labels.buttons && labels.buttons.site
+                                    ? labels.buttons.site
+                                    : "Site"}
+                            </a>
+                        ) : null}
+
+                        {safePlay ? (
+                            <a
+                                class="btn"
+                                href={safePlay}
+                                target={target}
+                                rel={rel}
+                                title={
+                                    labels &&
+                                    labels.project_card &&
+                                    labels.project_card.play_title
+                                        ? `${labels.project_card.play_title}: ${title}`
+                                        : `Open on Play Store: ${title}`
+                                }
+                            >
+                                {labels && labels.buttons && labels.buttons.play
+                                    ? labels.buttons.play
+                                    : "Play Store"}
+                            </a>
+                        ) : null}
+
+                        {safeRepo ? (
+                            <a
+                                class="btn"
+                                href={safeRepo}
+                                target={target}
+                                rel={rel}
+                                title={
+                                    labels &&
+                                    labels.project_card &&
+                                    labels.project_card.repo_title
+                                        ? `${labels.project_card.repo_title}: ${title}`
+                                        : `View repository: ${title}`
+                                }
+                            >
+                                {labels && labels.buttons && labels.buttons.repo
+                                    ? labels.buttons.repo
+                                    : "Repo"}
+                            </a>
+                        ) : null}
+                    </>
+                );
+            })()
+        }
+    </div>
+</article>
+
+<style>
+    /* Light, component-scoped tweaks. Global tokens live in src/styles.css */
+    :root {
+        --card-gap: 0.6rem;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--card-gap);
+    }
+
+    .card {
+        background: linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.05),
+            rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.2rem;
+        transition:
+            transform 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+            box-shadow 300ms cubic-bezier(0.2, 0.9, 0.2, 1),
+            border-color 300ms ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            0 8px 20px rgba(45, 212, 191, 0.12);
+        border-color: rgba(45, 212, 191, 0.2);
+    }
+
+    .card-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .card h3 {
+        margin: 0 0 0.35rem 0;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: #d1d9e2;
+        transition: color 300ms ease;
+    }
+
+    .card p {
+        margin: 0;
+        color: #c1ccd7;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+        line-height: 1.5;
+    }
+
+    .techs {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tech {
+        font-size: 0.78rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+        background: rgba(45, 212, 191, 0.05);
+        border: 1px solid rgba(45, 212, 191, 0.1);
+        color: #a8b8c4;
+        font-weight: 500;
+        transition: all 200ms ease;
+    }
+
+    .card-link:hover .tech {
+        background: rgba(45, 212, 191, 0.08);
+        border-color: rgba(45, 212, 191, 0.15);
+        color: #2dd4bf;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 0.6rem;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 0.75rem;
+    }
+
+    .card-actions .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        white-space: nowrap;
+        background: linear-gradient(135deg, #2dd4bf, #60a5fa);
+        color: #ffffff;
+        font-weight: 600;
+        text-decoration: none;
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(45, 212, 191, 0.25);
+        flex: 1;
+        text-align: center;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-actions .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(45, 212, 191, 0.35);
+        background: linear-gradient(135deg, #34d4c4, #70b0fd);
+        scale: 1.02;
+    }
+
+    /* When the card has no external links, hide actions area to avoid empty space */
+    .card-actions[aria-hidden="true"] {
+        display: none;
+    }
+
+    @media (max-width: 480px) {
+        .card {
+            padding: 1rem;
+        }
+        .card-actions {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .card-actions .btn {
+            flex: none;
+            width: 100%;
+        }
+    }
+</style>

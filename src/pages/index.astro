@@ -1,0 +1,111 @@
+---
+/*
+  English homepage (server-rendered)
+  - Canonical English version: <html lang="en">
+  - Uses shared IndexLayout and IndexContent components
+*/
+
+import IndexLayout from "../components/IndexLayout.astro";
+import IndexContent from "../components/IndexContent.astro";
+
+import site from "../data/site.json";
+import projectsData from "../data/projects.json";
+import participationsData from "../data/participations.json";
+import { getCurrentLocale, getLabels, t } from "../utils/i18n.ts";
+import type {
+    ProjectData,
+    ParticipationData,
+    ProcessedProject,
+    ProcessedParticipation,
+} from "../types/index.ts";
+
+// Get current locale and labels
+const currentLocale = getCurrentLocale(Astro.url.pathname);
+const labels = getLabels(currentLocale);
+
+const projects: ProcessedProject[] = (
+    (projectsData.projects as ProjectData[]) || []
+).map(
+    (p: ProjectData): ProcessedProject => ({
+        id: p.id,
+        title:
+            p.titles && p.titles.en
+                ? p.titles.en
+                : p.titles && p.titles.it
+                  ? p.titles.it
+                  : p.id,
+        desc:
+            p.descriptions && p.descriptions.en
+                ? p.descriptions.en
+                : p.descriptions && p.descriptions.it
+                  ? p.descriptions.it
+                  : "",
+        tech: p.tech || [],
+        repo: p.repo || "",
+        live: p.live || "",
+        play: p.play || "",
+        package: p.package || "",
+    }),
+);
+
+const participations: Record<string, ProcessedParticipation> = {};
+((participationsData.participations as ParticipationData[]) || []).forEach(
+    (p: ParticipationData) => {
+        const name =
+            p.name && p.name.en
+                ? p.name.en
+                : p.name && p.name.it
+                  ? p.name.it
+                  : p.id;
+
+        participations[p.id] = {
+            name,
+            url: p.url,
+            entries: (p.entries || []).sort((a, b) => b.year - a.year),
+        };
+    },
+);
+
+/**
+ * Return ordinal string for a rank number (e.g. 1 -> "1st").
+ */
+function ordinal(n: number | string) {
+    const num = Number(n) || 0;
+    const v = num % 100;
+    if (v >= 11 && v <= 13) return String(num) + "th";
+    switch (num % 10) {
+        case 1:
+            return String(num) + "st";
+        case 2:
+            return String(num) + "nd";
+        case 3:
+            return String(num) + "rd";
+        default:
+            return String(num) + "th";
+    }
+}
+---
+
+<IndexLayout
+    currentLocale={currentLocale}
+    title={site.title + " — " + t("nav.home", currentLocale)}
+    description={site.description[currentLocale] || site.description.en}
+    canonicalUrl="https://rfmariano.it/"
+    ogLocale="en_US"
+    ogUrl="https://rfmariano.it/"
+    alternateUrls={[
+        { hreflang: "en", href: "https://rfmariano.it/" },
+        { hreflang: "it", href: "https://rfmariano.it/it/" },
+    ]}
+    site={site}
+    labels={labels}
+>
+    <IndexContent
+        site={site}
+        currentLocale={currentLocale}
+        labels={labels}
+        projects={projects}
+        participations={participations}
+        ordinalFunc={ordinal}
+    />
+</IndexLayout>

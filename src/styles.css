@@ -1,0 +1,392 @@
+:root {
+    /* Color system (dark-first design). You can override by adding .light to <html> */
+    --bg: #0b1220;
+    --panel: #071020;
+    --muted: #9aa7b2;
+    --text: #e6eef8;
+    --accent: #2dd4bf;
+    --accent-2: #60a5fa;
+    --glass: rgba(255, 255, 255, 0.02);
+    --border: rgba(255, 255, 255, 0.04);
+    --focus: rgba(45, 212, 191, 0.18);
+
+    /* Sizing */
+    --radius-sm: 6px;
+    --radius: 10px;
+    --container: 1100px;
+
+    /* Typography */
+    --ui-font:
+        Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial;
+    --mono-font:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+        "Helvetica Neue", monospace;
+
+    /* Motion */
+    --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+    --duration: 200ms;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background:
+        radial-gradient(
+            1200px 600px at -10% -10%,
+            rgba(96, 165, 250, 0.06),
+            transparent 6%
+        ),
+        radial-gradient(
+            800px 400px at 110% 110%,
+            rgba(45, 212, 191, 0.04),
+            transparent 6%
+        ),
+        var(--bg);
+    color: var(--text);
+    font-family: var(--ui-font);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Light theme override (if you prefer a light site, add .light to <html>) */
+.light {
+    --bg: #ffffff;
+    --panel: #f8fafc;
+    --muted: #475569;
+    --text: #0f1724;
+    --glass: rgba(255, 255, 255, 0.6);
+    --border: rgba(2, 6, 23, 0.04);
+    --focus: rgba(14, 165, 164, 0.12);
+}
+
+/* Layout helpers */
+.wrap {
+    max-width: var(--container);
+    margin: 3.5rem auto;
+    padding: 1.25rem;
+}
+
+/* Header / Brand */
+.site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.brand {
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+}
+
+.brand-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #021124;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+}
+
+.brand-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.brand-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.brand-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* Navigation / controls */
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: inherit;
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition:
+        transform var(--duration) var(--ease),
+        box-shadow var(--duration) var(--ease),
+        background-color var(--duration) var(--ease);
+}
+
+.btn:hover,
+.btn:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(2, 6, 23, 0.06);
+    outline: none;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 4px var(--focus);
+}
+
+/* Main grid */
+.site-main .wrap {
+    padding: 0;
+}
+
+main {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+/* Panels */
+.panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+    border-radius: var(--radius);
+    padding: 1rem;
+    border: 1px solid var(--border);
+    backdrop-filter: blur(6px);
+}
+
+/* Hero */
+.hero {
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+p.lead {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+/* Tech chips / stack */
+.stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+}
+
+.chip {
+    background: var(--glass);
+    border-radius: 999px;
+    padding: 0.36rem 0.6rem;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--muted);
+}
+
+/* Projects */
+.projects,
+.projects li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.projects {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 0.6rem;
+}
+
+.card {
+    display: block;
+    padding: 0.9rem;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition:
+        transform var(--duration) var(--ease),
+        box-shadow var(--duration) var(--ease);
+}
+
+.card:hover,
+.card:focus {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+    outline: none;
+}
+
+.card h3 {
+    margin: 0 0 0.35rem 0;
+    font-size: 1.05rem;
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.techs,
+.techs li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.techs {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tech {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.45rem;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    color: var(--muted);
+}
+
+/* Aside / snippet */
+aside .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.snippet {
+    background: #041422;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    font-family: var(--mono-font);
+    font-size: 0.9rem;
+    color: #cfeef5;
+    line-height: 1.4;
+    overflow: auto;
+}
+
+.snippet pre {
+    margin: 0;
+    white-space: pre;
+    tab-size: 2;
+}
+
+/* Socials */
+.socials {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+}
+
+.socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: transparent;
+    font-size: 0.9rem;
+}
+
+.socials svg {
+    width: 18px;
+    height: 18px;
+    opacity: 0.95;
+}
+
+/* Footer */
+.site-footer .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0;
+}
+
+.site-footer small {
+    color: var(--muted);
+}
+
+/* Utility classes */
+.small {
+    font-size: 0.85rem;
+    color: var(--muted);
+}
+.hidden {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+    aside {
+        order: 2;
+    }
+    .site-header .wrap {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.9rem;
+    }
+    .site-footer .wrap {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+        text-align: center;
+    }
+}
+
+/* Accessibility: focus outlines for keyboard users */
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--focus);
+    border-radius: 6px;
+}
+
+/* Print-friendly adjustments */
+@media print {
+    body {
+        background: #fff;
+        color: #000;
+    }
+    .panel,
+    .card,
+    .snippet {
+        border: 1px solid #ddd;
+        background: #fff;
+        color: #000;
+        box-shadow: none;
+    }
+    .site-header,
+    .site-footer,
+    .socials {
+        display: none;
+    }
+}
