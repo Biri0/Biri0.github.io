@@ -27,9 +27,7 @@
       },
       "tech": ["T3", "TypeScript", "Next.js", "Expo"],
       "repo": "",
-      "live": "https://dialettario.rfmariano.it/",
-      "play": "https://play.google.com/store/apps/details?id=it.rfmariano.dialettario",
-      "package": "it.rfmariano.dialettario"
+      "live": "https://dialettario.rfmariano.it/"
     }
   ]
 }
