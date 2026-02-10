@@ -1,0 +1,204 @@
+---
+import PrivacyLayout from "../../components/PrivacyLayout.astro";
+---
+
+<PrivacyLayout
+    title="Privacy Policy - NStates App"
+    appName="NStates"
+    lastUpdated="10 February 2026"
+    accentColor="#3498db"
+>
+    <div class="my-5 rounded-md border-l-4 border-emerald-500/80 bg-emerald-50/70 dark:bg-emerald-500/10 px-4 py-3 text-emerald-900 dark:text-emerald-200">
+        <strong>In summary:</strong> NStates is an Android client for the NationStates
+        online nation simulation game. The app communicates exclusively with the official
+        NationStates API. We do not collect, track, or share any personal data. There
+        are no ads, analytics, or third-party tracking services.
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>
+        NStates is an unofficial Android client for
+        <a href="https://www.nationstates.net" target="_blank" class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80">NationStates</a>,
+        a free online nation simulation game. The app allows you to manage your
+        nation, read and respond to issues, and view nation statistics from your
+        Android device. NStates is not affiliated with or endorsed by NationStates
+        or Max Barry.
+    </p>
+
+    <h2>2. Data we do NOT collect</h2>
+    <p>NStates does not directly collect, transmit, share, or sell:</p>
+    <ul>
+        <li>Personally identifiable information</li>
+        <li>App usage or behavioral analytics</li>
+        <li>Location data</li>
+        <li>Device information (model, OS version, identifiers)</li>
+        <li>Advertising identifiers</li>
+        <li>Crash reports or diagnostics</li>
+    </ul>
+
+    <h2>3. Data stored on your device</h2>
+    <p>NStates stores a minimal amount of data locally on your device to enable authentication and app functionality:</p>
+    <ul>
+        <li>
+            <strong>Authentication tokens:</strong> your nation name, session PIN,
+            and autologin token are stored in
+            <strong>EncryptedSharedPreferences</strong>, encrypted with AES-256
+            and protected by the Android Keystore. These tokens are used to
+            authenticate with the NationStates API without requiring you to
+            re-enter your password each time.
+        </li>
+        <li>
+            <strong>User-Agent string:</strong> a configurable identifier sent with
+            API requests, stored in Jetpack DataStore. By default it contains no
+            personal information.
+        </li>
+    </ul>
+    <p>
+        <strong>Your password is never stored.</strong> It is sent once over HTTPS
+        during login and immediately cleared from memory after authentication.
+    </p>
+
+    <h2>4. Network communications</h2>
+    <p>
+        All network traffic goes exclusively to a single domain:
+        <code>https://www.nationstates.net</code>. The app communicates with the
+        official NationStates API over HTTPS to:
+    </p>
+    <ul>
+        <li>Authenticate your nation (login and session resume)</li>
+        <li>Fetch your nation's profile data (name, flag, statistics, government, economy)</li>
+        <li>Retrieve and respond to legislative issues</li>
+        <li>Load nation flag and issue banner images</li>
+    </ul>
+    <p>
+        No data is sent to any other server. There are no analytics endpoints,
+        advertising networks, or third-party services receiving data from the app.
+    </p>
+
+    <h2>5. Third-party services</h2>
+    <p>NStates does not integrate any third-party tracking, analytics, or advertising services. Specifically:</p>
+    <ul>
+        <li>No advertising SDKs (no AdMob, no ad networks)</li>
+        <li>No analytics services (no Firebase Analytics, no Google Analytics)</li>
+        <li>No crash reporting services (no Crashlytics, no Sentry)</li>
+        <li>No social media SDKs</li>
+    </ul>
+    <p>
+        The only external service the app communicates with is the official
+        <a href="https://www.nationstates.net/pages/api.html" target="_blank" class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80">NationStates API</a>,
+        which is governed by its own
+        <a href="https://www.nationstates.net/page=privacy" target="_blank" class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80">Privacy Policy</a>.
+    </p>
+
+    <h2>6. Data security</h2>
+    <p>Your data is protected through:</p>
+    <ul>
+        <li>
+            <strong>Encrypted storage:</strong> authentication tokens are encrypted
+            at rest using AES-256-GCM, with keys managed by the Android Keystore
+        </li>
+        <li>
+            <strong>HTTPS only:</strong> all communication with NationStates uses
+            encrypted HTTPS connections
+        </li>
+        <li>
+            <strong>Password handling:</strong> your password is never written to
+            disk and is cleared from memory immediately after login
+        </li>
+        <li>
+            <strong>App isolation:</strong> all stored data is in the app's private
+            storage, inaccessible to other apps on non-rooted devices
+        </li>
+    </ul>
+
+    <h2>7. App permissions</h2>
+    <p>NStates requests only one permission:</p>
+    <ul>
+        <li>
+            <strong>Internet access:</strong> required to communicate with the
+            NationStates API and load images
+        </li>
+    </ul>
+    <p>
+        The app does not request access to contacts, camera, microphone, location,
+        storage, phone state, or any other sensitive permissions.
+    </p>
+
+    <h2>8. Logout and data deletion</h2>
+    <p>
+        When you log out from the app, all locally stored authentication data
+        (nation name, session PIN, autologin token) is immediately and
+        permanently deleted from the device.
+    </p>
+    <p>
+        Uninstalling the app removes all associated data, including encrypted
+        preferences, DataStore settings, and any cached images.
+    </p>
+
+    <h2>9. Backup and synchronization</h2>
+    <p>
+        NStates does not provide cloud backup or synchronization features. Your
+        device's operating system may include the app's data in automatic backups
+        (e.g., Google Drive backup), but encrypted authentication tokens would
+        not be functional on a different device due to hardware-bound encryption
+        keys.
+    </p>
+
+    <h2>10. Children's privacy</h2>
+    <p>
+        NStates does not knowingly collect any data from children. The app does
+        not collect personal data from any user. NationStates itself has its own
+        age and usage policies.
+    </p>
+
+    <h2>11. User rights</h2>
+    <p>Since NStates does not collect or store personal data on any server, you always have complete control:</p>
+    <ul>
+        <li>
+            <strong>Access:</strong> all stored data is visible through your device
+        </li>
+        <li>
+            <strong>Deletion:</strong> log out to clear authentication data, or
+            uninstall the app to remove everything
+        </li>
+        <li>
+            <strong>Portability:</strong> no personal data is held on our servers
+        </li>
+    </ul>
+    <p>
+        For data held by NationStates itself, refer to the
+        <a href="https://www.nationstates.net/page=privacy" target="_blank" class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80">NationStates Privacy Policy</a>.
+    </p>
+
+    <h2>12. Changes to this Privacy Policy</h2>
+    <p>Any changes to this privacy policy will be communicated through:</p>
+    <ul>
+        <li>App updates on the Google Play Store</li>
+        <li>Publication of the updated version on this page</li>
+    </ul>
+
+    <h2>13. Regulatory compliance</h2>
+    <p>NStates is designed to comply with:</p>
+    <ul>
+        <li><strong>GDPR (General Data Protection Regulation)</strong></li>
+        <li><strong>CCPA (California Consumer Privacy Act)</strong></li>
+        <li><strong>Other applicable privacy regulations</strong></li>
+    </ul>
+
+    <div class="my-5 rounded-md border-l-4 border-emerald-500/80 bg-emerald-50/70 dark:bg-emerald-500/10 px-4 py-3 text-emerald-900 dark:text-emerald-200">
+        <strong>Remember:</strong> NStates does not collect any personal data. All
+        authentication data is stored encrypted on your device and is never sent to
+        any server other than the official NationStates API.
+    </div>
+
+    <div slot="additional-contact">
+        <p>
+            For matters related to your NationStates account data, contact
+            NationStates directly at
+            <a
+                href="https://www.nationstates.net/page=help"
+                target="_blank" class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80">NationStates Help</a
+            >.
+        </p>
+    </div>
+</PrivacyLayout>
