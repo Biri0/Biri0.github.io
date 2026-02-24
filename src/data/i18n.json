@@ -41,8 +41,8 @@
   },
   "bento": {
     "hero_bio": {
-      "en": "I'm a CS student who loves building open-source tools and solving backend problems. I built Denaro, Dialettario, and NStates simply because I needed them for myself. I lean heavily towards efficiency and user privacy, whether I'm writing a Rust scraper or shipping an offline-first app.",
-      "it": "Sono uno studente di informatica che ama sviluppare strumenti open-source e risolvere problemi lato backend. Ho creato Denaro, Dialettario e NStates semplicemente perché ne avevo bisogno. Punto molto sull'efficienza e sulla privacy, che stia scrivendo uno scraper in Rust o un'app offline-first."
+      "en": "I'm a CS student who loves building open-source tools and solving backend problems. The projects I built started as personal needs. I lean heavily towards efficiency and user privacy, whether I'm writing a Rust scraper or shipping an offline-first app.",
+      "it": "Sono uno studente di informatica che ama sviluppare strumenti open-source e risolvere problemi lato backend. I progetti che ho sviluppato li ho realizzati semplicemente perché ne avevo bisogno. Punto molto sull'efficienza e sulla privacy, che stia scrivendo uno scraper in Rust o un'app offline-first."
     },
     "philosophy_title": {
       "en": "My Approach",
