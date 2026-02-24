@@ -1,7 +1,7 @@
 ---
 /*
   IndexContent component - Shared main content for both EN/IT index pages
-  - Renders hero section, bio, location, and projects
+  - Renders Bento Box layout: hero, philosophy, preferences, projects, etc.
   - Accepts locale-specific data as props
 */
 
@@ -28,153 +28,199 @@ const { site, currentLocale, labels, projects, participations, ordinalFunc } =
     Astro.props;
 ---
 
-<main class="mt-5 grid gap-5 items-start md:grid-cols-[minmax(0,1fr)_360px]">
-  <section class="rounded-xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-4 md:p-5 shadow-sm" aria-labelledby="hero-title">
+<main class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-5 auto-rows-[minmax(180px,auto)]">
+
+  <!-- Bento Box 1: Hero Bio (Col Span 2, Row Span 2) -->
+  <section class="md:col-span-2 md:row-span-2 flex flex-col justify-center rounded-2xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-6 md:p-8 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md" aria-labelledby="hero-title">
     <div>
-      <h1 id="hero-title" class="text-3xl md:text-4xl font-extrabold leading-tight text-zinc-950 dark:bg-gradient-to-tr dark:from-teal-300 dark:via-sky-400 dark:to-purple-500 dark:bg-clip-text dark:text-transparent">
+      <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight text-zinc-950 dark:bg-gradient-to-tr dark:from-teal-300 dark:via-sky-400 dark:to-purple-500 dark:bg-clip-text dark:text-transparent">
         {labels.headings.hero_title}
       </h1>
-      <p class="mt-3 text-base md:text-lg leading-7 text-zinc-600 dark:text-zinc-300 max-w-[90%]">
-        {site.bio[currentLocale] || site.bio.en}
+      <p class="mt-4 md:mt-6 text-base md:text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
+        {labels.bento.hero_bio}
       </p>
 
-      <div class="flex justify-end mt-4 md:mt-6">
-        <div class="rounded-xl border border-teal-600/25 dark:border-teal-300/30 bg-teal-600/10 dark:bg-teal-300/10 px-4 py-3 text-center shadow-md backdrop-blur">
-          <div class="text-xs font-semibold uppercase tracking-wide text-teal-700 dark:text-teal-300">
-            {labels.headings.location}
-          </div>
-          <div class="mt-1 font-bold text-zinc-900 dark:text-zinc-100">
-            {labels.headings.location_value}
-          </div>
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <div class="inline-flex items-center gap-2 rounded-xl border border-teal-600/25 dark:border-teal-300/30 bg-teal-600/10 dark:bg-teal-300/10 px-4 py-2 text-sm font-semibold text-teal-800 dark:text-teal-200 shadow-sm backdrop-blur">
+          {labels.bento.status_text}
+        </div>
+        <div class="inline-flex items-center gap-2 rounded-xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] px-4 py-2 text-sm font-semibold text-zinc-700 dark:text-zinc-300 shadow-sm backdrop-blur">
+          📍 {labels.headings.location_value}
         </div>
       </div>
-    </div>
-
-    <div class="mt-8">
-      <h2 id="projects" class="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white">
-        {labels.headings.selected_projects}
-      </h2>
-      <div class="mt-2 h-0.5 w-16 rounded bg-gradient-to-r from-teal-300 to-sky-400"></div>
-      <ul
-        class="mt-5 grid gap-4 sm:grid-cols-2 list-none m-0 p-0"
-        aria-label={t("misc.projects_list_aria", currentLocale)}
-      >
-        {
-          projects.map((p) => (
-            <li role="listitem">
-              <ProjectCard
-                id={p.id}
-                title={p.title}
-                description={p.desc}
-                tech={p.tech}
-                repo={p.repo}
-                live={p.live}
-                play={p.play}
-                labels={labels}
-              />
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 
-  <aside class="md:sticky md:top-8 md:h-fit rounded-xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-4 md:p-5 shadow-sm" aria-labelledby="aside-title">
-    <div class="mb-8">
-      <div class="mb-4">
-        <h3 id="aside-title" class="text-lg font-bold text-zinc-900 dark:text-white">
-          {labels.headings.olympiad_participations}
-        </h3>
-        <p class="m-0 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {labels.headings.olympiad_description}
+  <!-- Bento Box 2: Preferences -->
+  <section class="rounded-2xl border border-sky-600/20 dark:border-sky-300/20 bg-sky-600/5 dark:bg-sky-300/5 backdrop-blur p-6 shadow-sm flex flex-col justify-center transition-transform hover:-translate-y-1 hover:shadow-md">
+    <h3 class="text-lg font-bold text-zinc-900 dark:text-sky-300 mb-3 flex items-center gap-2">
+      <span class="text-xl">⚙️</span>
+      {labels.bento.preferences_title}
+    </h3>
+    <p class="text-sm md:text-base leading-relaxed text-zinc-700 dark:text-zinc-400">
+      {labels.bento.preferences_text}
+    </p>
+  </section>
+
+  <!-- Bento Box 3: Hobbies & Socials -->
+  <section class="rounded-2xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-6 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-1 hover:shadow-md">
+    <div>
+      <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-3 flex items-center gap-2">
+         <span class="text-xl">🎧</span>
+         {labels.bento.hobbies_title}
+      </h3>
+      <p class="text-sm md:text-base leading-relaxed text-zinc-700 dark:text-zinc-400">
+        {labels.bento.hobbies_text}
+      </p>
+    </div>
+    <div class="mt-5 flex flex-wrap gap-2">
+      <a
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 no-underline text-sm font-medium text-zinc-700 dark:text-zinc-300 transition hover:bg-teal-50 dark:hover:bg-teal-300/10 hover:border-teal-300/30"
+        href="https://github.com/Biri0/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={t("socials.github", currentLocale)}
+      >
+        👨‍💻 {t("socials.github", currentLocale)}
+      </a>
+      <a
+        class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 no-underline text-sm font-medium text-zinc-700 dark:text-zinc-300 transition hover:bg-teal-50 dark:hover:bg-teal-300/10 hover:border-teal-300/30"
+        href="https://www.goodreads.com/rfmariano"
+        target="_blank"
+        rel="noopener noreferrer"
+        title={t("socials.goodreads", currentLocale)}
+      >
+        📚 {t("socials.goodreads", currentLocale)}
+      </a>
+    </div>
+  </section>
+
+  <!-- Bento Box 4: Projects (Full Width) -->
+  <section class="md:col-span-3 rounded-2xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-6 md:p-8 shadow-sm" aria-labelledby="projects">
+    <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h2 id="projects" class="text-2xl font-bold text-zinc-900 dark:text-white">
+          {labels.bento.projects_title}
+        </h2>
+        <p class="mt-2 text-sm md:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl">
+          {labels.bento.projects_subtitle}
         </p>
       </div>
-
-      <div role="region" aria-label="Olympiad participations">
-        <div class="mt-4 overflow-hidden rounded-lg ring-1 ring-zinc-900/10 dark:ring-white/10 bg-white/40 dark:bg-white/[0.03]">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr class="bg-teal-600/5 dark:bg-teal-300/10 border-b border-teal-600/20 dark:border-teal-300/20">
-                <th class="text-left px-3 py-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                  {t("participations.table_headers.competition", currentLocale)}
-                </th>
-                <th class="text-left px-3 py-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                  {t("participations.table_headers.year", currentLocale)}
-                </th>
-                <th class="text-left px-3 py-2 text-sm font-semibold text-sky-700 dark:text-sky-300">
-                  {t("participations.table_headers.rank", currentLocale)}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                Object.entries(participations)
-                  .flatMap(([, data]) => (data.entries || []).map((entry) => ({
-                    ...entry,
-                    name: data.name,
-                    url: entry.url || data.url,
-                  })))
-                  .sort((a, b) => {
-                    if (a.year !== b.year) return b.year - a.year;
-                    return a.name.localeCompare(b.name);
-                  })
-                  .map((entry) => (
-                    <tr class="transition hover:bg-teal-300/5">
-                      <td class="px-3 py-2 text-sm font-medium">
-                        {entry.url ? (
-                          <a
-                            href={entry.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-sky-700 dark:text-sky-300 no-underline transition hover:text-teal-700 dark:hover:text-teal-300"
-                          >
-                            {entry.name}
-                          </a>
-                        ) : (
-                          entry.name
-                        )}
-                      </td>
-                      <td class="px-3 py-2 text-sm text-zinc-600 dark:text-zinc-400">
-                        {entry.year}
-                      </td>
-                      <td class="px-3 py-2 text-sm font-semibold text-teal-700 dark:text-teal-300">
-                        {entry.rank ? ordinalFunc(entry.rank) : "Participant"}
-                      </td>
-                    </tr>
-                  ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <div class="h-1 w-16 rounded bg-gradient-to-r from-teal-300 to-sky-400 self-start md:self-auto"></div>
     </div>
 
-    <div class="flex flex-col gap-4 md:flex-row">
-      <div class="flex-1 rounded-xl border border-white/10 bg-white/5 p-4 shadow-sm backdrop-blur">
-        <h4 class="m-0 mb-3 text-base font-semibold text-zinc-900 dark:text-white">Socials</h4>
-        <div class="flex flex-col gap-2">
-          <a
-            class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 border border-white/10 no-underline text-inherit transition backdrop-blur hover:-translate-y-0.5 hover:bg-teal-300/10 hover:border-teal-300/30"
-            href="https://github.com/Biri0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            title={t("socials.github", currentLocale)}
-          >
-            <span class="text-base">👨‍💻</span>
-            {t("socials.github", currentLocale)}
-          </a>
-          <a
-            class="inline-flex items-center gap-2 px-3 py-2 rounded-md bg-white/5 border border-white/10 no-underline text-inherit transition backdrop-blur hover:-translate-y-0.5 hover:bg-teal-300/10 hover:border-teal-300/30"
-            href="https://www.goodreads.com/rfmariano"
-            target="_blank"
-            rel="noopener noreferrer"
-            title={t("socials.goodreads", currentLocale)}
-          >
-            <span class="text-base">📚</span>
-            {t("socials.goodreads", currentLocale)}
-          </a>
-        </div>
-      </div>
+    <ul
+      class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 list-none m-0 p-0"
+      aria-label={t("misc.projects_list_aria", currentLocale)}
+    >
+      {
+        projects.map((p) => (
+          <li role="listitem" class="h-full">
+            <ProjectCard
+              id={p.id}
+              title={p.title}
+              description={p.desc}
+              tech={p.tech}
+              repo={p.repo}
+              live={p.live}
+              play={p.play}
+              labels={labels}
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Bento Box 5: Philosophy (Col Span 2) -->
+  <section class="md:col-span-2 rounded-2xl border border-teal-600/20 dark:border-teal-300/20 bg-teal-600/5 dark:bg-teal-300/5 backdrop-blur p-6 shadow-sm flex flex-col justify-center transition-transform hover:-translate-y-1 hover:shadow-md">
+    <h3 class="text-lg font-bold text-zinc-900 dark:text-teal-300 mb-3 flex items-center gap-2">
+      <span class="text-xl">🧠</span>
+      {labels.bento.philosophy_title}
+    </h3>
+    <p class="text-sm md:text-base leading-relaxed text-zinc-700 dark:text-zinc-400">
+      {labels.bento.philosophy_text}
+    </p>
+  </section>
+
+  <!-- Bento Box 6: Olympiads Table -->
+  <section class="rounded-2xl border border-zinc-950/10 dark:border-white/10 bg-white/40 dark:bg-white/[0.03] backdrop-blur p-6 shadow-sm overflow-hidden flex flex-col transition-transform hover:-translate-y-1 hover:shadow-md">
+    <h3 class="text-lg font-bold text-zinc-900 dark:text-white mb-4 flex items-center gap-2">
+      <span class="text-xl">🏆</span>
+      {labels.headings.olympiad_participations}
+    </h3>
+    <div class="flex-1 overflow-y-auto custom-scrollbar ring-1 ring-zinc-900/5 dark:ring-white/5 rounded-lg bg-white/50 dark:bg-black/20">
+      <table class="w-full border-collapse text-left text-sm">
+        <thead class="sticky top-0 bg-zinc-100/90 dark:bg-zinc-900/90 backdrop-blur z-10">
+          <tr>
+            <th class="px-3 py-2 font-semibold text-zinc-700 dark:text-zinc-300 border-b border-zinc-200 dark:border-zinc-800">
+              {t("participations.table_headers.competition", currentLocale)}
+            </th>
+            <th class="px-3 py-2 font-semibold text-zinc-700 dark:text-zinc-300 border-b border-zinc-200 dark:border-zinc-800">
+              {t("participations.table_headers.year", currentLocale)}
+            </th>
+            <th class="px-3 py-2 font-semibold text-zinc-700 dark:text-zinc-300 border-b border-zinc-200 dark:border-zinc-800">
+              {t("participations.table_headers.rank", currentLocale)}
+            </th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-zinc-200 dark:divide-zinc-800/50">
+          {
+            Object.entries(participations)
+              .flatMap(([, data]) => (data.entries || []).map((entry) => ({
+                ...entry,
+                name: data.name,
+                url: entry.url || data.url,
+              })))
+              .sort((a, b) => {
+                if (a.year !== b.year) return b.year - a.year;
+                return a.name.localeCompare(b.name);
+              })
+              .map((entry) => (
+                <tr class="transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
+                  <td class="px-3 py-2.5 font-medium">
+                    {entry.url ? (
+                      <a
+                        href={entry.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-sky-700 dark:text-sky-400 hover:text-sky-600 dark:hover:text-sky-300 hover:underline"
+                      >
+                        {entry.name}
+                      </a>
+                    ) : (
+                      <span class="text-zinc-900 dark:text-zinc-100">{entry.name}</span>
+                    )}
+                  </td>
+                  <td class="px-3 py-2.5 text-zinc-600 dark:text-zinc-400">
+                    {entry.year}
+                  </td>
+                  <td class="px-3 py-2.5 font-semibold text-teal-700 dark:text-teal-400">
+                    {entry.rank ? ordinalFunc(entry.rank) : "—"}
+                  </td>
+                </tr>
+              ))
+          }
+        </tbody>
+      </table>
     </div>
-  </aside>
+  </section>
+
 </main>
+
+<style>
+  /* Optional: Custom scrollbar for the Olympiads table if it gets too long */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.3);
+    border-radius: 20px;
+  }
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.2);
+  }
+</style>

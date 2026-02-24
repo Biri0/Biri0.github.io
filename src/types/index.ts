@@ -96,6 +96,19 @@ export interface Labels {
     location: string;
     location_value: string;
   };
+  bento: {
+    hero_bio: string;
+    philosophy_title: string;
+    philosophy_text: string;
+    preferences_title: string;
+    preferences_text: string;
+    status_title: string;
+    status_text: string;
+    hobbies_title: string;
+    hobbies_text: string;
+    projects_title: string;
+    projects_subtitle: string;
+  };
 }
 
 export interface AlternateUrl {

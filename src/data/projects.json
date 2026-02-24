@@ -7,8 +7,8 @@
         "it": "Denaro"
       },
       "descriptions": {
-        "en": "Denaro is a privacy-first personal finance app built with Expo and React Native. It works entirely offline: organize your money into customizable \"buckets\", record incomes and expenses, transfer funds between buckets, and automate recurring transactions — all stored locally in an encrypted (optional) database.",
-        "it": "Denaro è un'app per la gestione finanziaria personale incentrata sulla privacy, sviluppata con Expo e React Native. Funziona interamente offline: organizza il denaro in \"portafogli\" personalizzabili, registra entrate e uscite, trasferisce fondi tra portafogli e automatizza transazioni ricorrenti — tutto memorizzato localmente in un database crittografato (opzionale)."
+        "en": "Denaro is a privacy-first personal finance app built with Expo and React Native. It works entirely offline: organize your money into customizable \"buckets\", record incomes and expenses, transfer funds between buckets, and automate recurring transactions — all stored locally in an encrypted database.",
+        "it": "Denaro è un'app per la gestione finanziaria personale incentrata sulla privacy, sviluppata con Expo e React Native. Funziona interamente offline: organizza il denaro in \"portafogli\" personalizzabili, registra entrate e uscite, trasferisce fondi tra portafogli e automatizza transazioni ricorrenti — tutto memorizzato localmente in un database crittografato."
       },
       "tech": ["Expo", "React Native", "Encrypted DB"],
       "repo": "",
@@ -28,6 +28,20 @@
       "tech": ["T3", "TypeScript", "Next.js", "Expo"],
       "repo": "",
       "live": "https://dialettario.rfmariano.it/"
+    },
+    {
+      "id": "proj-nstates",
+      "titles": {
+        "en": "NStates",
+        "it": "NStates"
+      },
+      "descriptions": {
+        "en": "An Android client for NationStates built to provide a better native experience than the browser version.",
+        "it": "Un client Android per NationStates sviluppato per offrire un'esperienza nativa migliore rispetto alla versione browser."
+      },
+      "tech": ["Jetpack Compose", "Kotlin", "Android"],
+      "repo": "https://github.com/Biri0/NStates",
+      "live": ""
     }
   ]
 }

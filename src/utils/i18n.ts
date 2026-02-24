@@ -138,6 +138,19 @@ export function getLabels(locale: Locale) {
       location: t("headings.location", locale),
       location_value: t("headings.location_value", locale),
     },
+    bento: {
+      hero_bio: t("bento.hero_bio", locale),
+      philosophy_title: t("bento.philosophy_title", locale),
+      philosophy_text: t("bento.philosophy_text", locale),
+      preferences_title: t("bento.preferences_title", locale),
+      preferences_text: t("bento.preferences_text", locale),
+      status_title: t("bento.status_title", locale),
+      status_text: t("bento.status_text", locale),
+      hobbies_title: t("bento.hobbies_title", locale),
+      hobbies_text: t("bento.hobbies_text", locale),
+      projects_title: t("bento.projects_title", locale),
+      projects_subtitle: t("bento.projects_subtitle", locale),
+    },
   };
 }
 

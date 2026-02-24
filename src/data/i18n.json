@@ -17,8 +17,8 @@
   },
   "headings": {
     "hero_title": {
-      "en": "Hi — I build personal projects and mobile apps",
-      "it": "Ciao — sviluppo progetti personali e app mobile"
+      "en": "Hi, I'm Mariano 👋",
+      "it": "Ciao, sono Mariano 👋"
     },
     "hero_subtitle": {
       "en": "I focus on building useful projects and shipping mobile apps.",
@@ -38,6 +38,52 @@
     },
     "location": { "en": "Location", "it": "Sede" },
     "location_value": { "en": "Remote / Europe", "it": "Remote / Europa" }
+  },
+  "bento": {
+    "hero_bio": {
+      "en": "I'm a CS student who loves building open-source tools and solving backend problems. I built Denaro, Dialettario, and NStates simply because I needed them for myself. I lean heavily towards efficiency and user privacy, whether I'm writing a Rust scraper or shipping an offline-first app.",
+      "it": "Sono uno studente di informatica che ama sviluppare strumenti open-source e risolvere problemi lato backend. Ho creato Denaro, Dialettario e NStates semplicemente perché ne avevo bisogno. Punto molto sull'efficienza e sulla privacy, che stia scrivendo uno scraper in Rust o un'app offline-first."
+    },
+    "philosophy_title": {
+      "en": "My Approach",
+      "it": "Il Mio Approccio"
+    },
+    "philosophy_text": {
+      "en": "My Olympiad background taught me to care deeply about efficiency (my proudest moment was coding a segment tree with lazy propagation before ChatGPT existed). Lately, though, I use AI to help me ship faster so I can focus on solving real problems for real people.",
+      "it": "Le olimpiadi mi hanno insegnato l'importanza dell'efficienza (il momento di cui vado più fiero è stato programmare un segment tree con lazy propagation prima che esistesse ChatGPT). Ultimamente, però, uso l'IA per sviluppare più velocemente e concentrarmi sulla risoluzione di problemi diversi da quelli accademici."
+    },
+    "preferences_title": {
+      "en": "What I Do",
+      "it": "Cosa Faccio"
+    },
+    "preferences_text": {
+      "en": "I strongly prefer backend and systems programming over frontend design. In the past, I used to make indie games (especially in GDScript) and self-host a lot of my own services.",
+      "it": "Preferisco di gran lunga il backend e la programmazione di sistemi al design frontend. In passato, creavo giochi indie (specialmente in GDScript) e facevo self-hosting di molti dei miei servizi."
+    },
+    "status_title": {
+      "en": "Status",
+      "it": "Stato"
+    },
+    "status_text": {
+      "en": "🟢 Uni student • Open to part-time backend roles",
+      "it": "🟢 Studente universitario • Aperto a ruoli backend part-time"
+    },
+    "hobbies_title": {
+      "en": "Beyond Code",
+      "it": "Oltre il Codice"
+    },
+    "hobbies_text": {
+      "en": "I read mostly non-fiction (although I enjoy some fiction too), and I listen to a lot of music. I'm also a big fan of F-Droid and the open-source community.",
+      "it": "Leggo principalmente saggistica (anche se apprezzo qualche romanzo) e ascolto molta musica. Sono anche un grande fan di F-Droid e della community open-source."
+    },
+    "projects_title": {
+      "en": "Things I built because I needed them",
+      "it": "Cose che ho creato perché ne avevo bisogno"
+    },
+    "projects_subtitle": {
+      "en": "From privacy-first expense trackers to mapping Italian dialects.",
+      "it": "Da un tracker di spese attento alla privacy a una mappa dei dialetti italiani."
+    }
   },
   "project_card": {
     "package_label": { "en": "Package", "it": "Package" },
