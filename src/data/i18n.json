@@ -13,7 +13,7 @@
   },
   "socials": {
     "github": { "en": "GitHub", "it": "GitHub" },
-    "goodreads": { "en": "GoodReads", "it": "GoodReads" }
+    "storygraph": { "en": "StoryGraph", "it": "StoryGraph" }
   },
   "headings": {
     "hero_title": {
