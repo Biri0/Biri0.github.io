@@ -42,6 +42,20 @@
       "tech": ["Jetpack Compose", "Kotlin", "Android"],
       "repo": "https://github.com/Biri0/NStates",
       "live": ""
+    },
+    {
+      "id": "proj-figlet-browser",
+      "titles": {
+        "en": "Figlet Browser",
+        "it": "Figlet Browser"
+      },
+      "descriptions": {
+        "en": "Browse and preview hundreds of FIGlet ASCII art fonts directly in your browser. Search by name, filter by tags, pin favorites, and preview custom text in any font with a clean, responsive UI.",
+        "it": "Sfoglia e visualizza centinaia di font ASCII art FIGlet direttamente nel browser. Cerca per nome, filtra per tag, salva preferiti e vedi l'anteprima di un testo personalizzato con qualsiasi font, in un'interfaccia pulita e reattiva."
+      },
+      "tech": ["React", "TypeScript", "Vite", "Figlet.js", "Bun", "Tailwind CSS"],
+      "repo": "https://github.com/Biri0/figlet-browser",
+      "live": "https://ascii.rfmariano.it"
     }
   ]
 }
