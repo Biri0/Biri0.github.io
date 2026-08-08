@@ -7,11 +7,11 @@
         "it": "Denaro"
       },
       "descriptions": {
-        "en": "Denaro is a privacy-first personal finance app built with Expo and React Native. It works entirely offline: organize your money into customizable \"buckets\", record incomes and expenses, transfer funds between buckets, and automate recurring transactions — all stored locally in an encrypted database.",
-        "it": "Denaro è un'app per la gestione finanziaria personale incentrata sulla privacy, sviluppata con Expo e React Native. Funziona interamente offline: organizza il denaro in \"portafogli\" personalizzabili, registra entrate e uscite, trasferisce fondi tra portafogli e automatizza transazioni ricorrenti — tutto memorizzato localmente in un database crittografato."
+        "en": "Denaro is a private, offline-first personal finance app for Android. Manage accounts, income, expenses, transfers, debts, and recurring activity; explore monthly trends and customizable categories while keeping financial data on your device in an encrypted local database.",
+        "it": "Denaro è un'app Android privata e offline-first per la gestione delle finanze personali. Gestisci conti, entrate, uscite, trasferimenti, debiti e operazioni ricorrenti; consulta gli andamenti mensili e personalizza le categorie mantenendo i dati finanziari sul dispositivo in un database locale crittografato."
       },
-      "tech": ["Expo", "React Native", "Encrypted DB"],
-      "repo": "",
+      "tech": ["Kotlin", "Jetpack Compose", "Room", "SQLCipher"],
+      "repo": "https://github.com/Biri0/denaro",
       "live": "",
       "play": "https://play.google.com/store/apps/details?id=it.rfmariano.denaro"
     },
