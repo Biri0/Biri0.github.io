@@ -5,7 +5,7 @@ import PrivacyLayout from "../../components/PrivacyLayout.astro";
 <PrivacyLayout
     title="Privacy Policy - Denaro App"
     appName="Denaro"
-    lastUpdated="1 August 2026"
+    lastUpdated="8 August 2026"
     accentColor="#3498db"
 >
     <div class="my-5 rounded-md border-l-4 border-emerald-500/80 bg-emerald-50/70 dark:bg-emerald-500/10 px-4 py-3 text-emerald-900 dark:text-emerald-200">
@@ -31,7 +31,10 @@ import PrivacyLayout from "../../components/PrivacyLayout.astro";
         <li>Account names, currencies, and balances</li>
         <li>Income, expenses, transfers, and recurring transactions</li>
         <li>Transaction categories, dates, amounts, and notes</li>
-        <li>App preferences such as theme, language, and default currency</li>
+        <li>
+            App preferences such as theme, language, default currency, and
+            security settings
+        </li>
     </ul>
     <p>
         This on-device processing is necessary for the app to calculate balances,
@@ -70,6 +73,18 @@ import PrivacyLayout from "../../components/PrivacyLayout.astro";
             <strong>App isolation:</strong> Android isolates the app's private files
             from other apps under normal operating conditions.
         </li>
+        <li>
+            <strong>Optional app lock:</strong> you can require Android's system
+            authentication prompt before Denaro displays your financial data. Android
+            performs biometric or device-credential authentication; Denaro receives
+            only the authentication result and never receives or stores biometric
+            templates, PINs, patterns, or passwords.
+        </li>
+        <li>
+            <strong>Screen security:</strong> when enabled, Denaro asks Android to
+            prevent screenshots, screen recording, display on non-secure screens, and
+            previews in the Recents screen.
+        </li>
     </ul>
     <p>
         Non-financial preferences, including theme, language, and default currency,
@@ -81,6 +96,14 @@ import PrivacyLayout from "../../components/PrivacyLayout.astro";
         Denaro does not request Internet access and does not request user-granted
         access to contacts, location, camera, microphone, photos, files, phone
         state, or other sensitive device data.
+    </p>
+    <p>
+        Denaro declares Android's biometric permission solely to show the system
+        authentication prompt for the optional app lock. Authentication is handled
+        locally by Android. No biometric information or device credential is exposed
+        to Denaro or transmitted off your device. The app lock restricts access to
+        Denaro's interface and is separate from the database encryption described
+        above.
     </p>
 
     <h2>6. Advertising, analytics, and third-party services</h2>
@@ -114,6 +137,10 @@ import PrivacyLayout from "../../components/PrivacyLayout.astro";
         and default currency, in a system-managed backup according to your device and
         Google account settings. Such backups are controlled by Android and the
         applicable backup provider, not by Denaro.
+    </p>
+    <p>
+        App-lock and screen-security preferences are explicitly excluded from Android
+        cloud backups and device-to-device transfers.
     </p>
 
     <h2>8. Data retention and deletion</h2>
