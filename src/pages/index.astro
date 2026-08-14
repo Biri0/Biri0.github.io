@@ -11,7 +11,7 @@ import IndexContent from "../components/IndexContent.astro";
 import site from "../data/site.json";
 import projectsData from "../data/projects.json";
 import participationsData from "../data/participations.json";
-import { getCurrentLocale, getLabels, t } from "../utils/i18n.ts";
+import { getCurrentLocale, getLabels } from "../utils/i18n.ts";
 import type {
     ProjectData,
     ParticipationData,
@@ -40,11 +40,12 @@ const projects: ProcessedProject[] = (
                 : p.descriptions && p.descriptions.it
                   ? p.descriptions.it
                   : "",
+        type: p.types.en || p.types.it,
+        category: p.category,
         tech: p.tech || [],
         repo: p.repo || "",
         live: p.live || "",
         play: p.play || "",
-        package: p.package || "",
     }),
 );
 
@@ -60,6 +61,7 @@ const participations: Record<string, ProcessedParticipation> = {};
 
         participations[p.id] = {
             name,
+            discipline: p.discipline.en || p.discipline.it,
             url: p.url,
             entries: (p.entries || []).sort((a, b) => b.year - a.year),
         };
@@ -88,8 +90,8 @@ function ordinal(n: number | string) {
 
 <IndexLayout
     currentLocale={currentLocale}
-    title={site.title + " — " + t("nav.home", currentLocale)}
-    description={site.description[currentLocale] || site.description.en}
+    title={labels.meta.title}
+    description={labels.meta.description}
     canonicalUrl="https://rfmariano.it/"
     ogLocale="en_US"
     ogUrl="https://rfmariano.it/"
@@ -102,7 +104,6 @@ function ordinal(n: number | string) {
 >
     <IndexContent
         site={site}
-        currentLocale={currentLocale}
         labels={labels}
         projects={projects}
         participations={participations}

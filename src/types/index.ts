@@ -30,22 +30,24 @@ export interface ProjectData {
   id: string;
   titles: LocalizedText;
   descriptions: LocalizedText;
+  types: LocalizedText;
+  category: "android" | "web";
   tech: string[];
   repo: string;
   live: string;
   play: string;
-  package?: string;
 }
 
 export interface ProcessedProject {
   id: string;
   title: string;
   desc: string;
+  type: string;
+  category: "android" | "web";
   tech: string[];
   repo: string;
   live: string;
   play: string;
-  package: string;
 }
 
 export interface ParticipationEntry {
@@ -57,58 +59,64 @@ export interface ParticipationEntry {
 export interface ParticipationData {
   id: string;
   name: LocalizedText;
+  discipline: LocalizedText;
   url: string;
   entries: ParticipationEntry[];
 }
 
 export interface ProcessedParticipation {
   name: string;
+  discipline: string;
   url: string;
   entries: ParticipationEntry[];
 }
 
 export interface Labels {
-  buttons: {
-    site: string;
-    play: string;
-    repo: string;
-    email: string;
-  };
-  project_card: {
-    package_label: string;
-    live_title: string;
-    play_title: string;
-    repo_title: string;
-    techs_label: string;
+  meta: { title: string; description: string };
+  accessibility: {
+    skip_content: string;
+    primary_navigation: string;
+    choose_language: string;
+    introduction: string;
+    filter_projects: string;
   };
   nav: {
-    home: string;
     projects: string;
+    record: string;
     contact: string;
-    language: string;
+    home_label: string;
   };
-  headings: {
-    hero_title: string;
-    hero_subtitle: string;
-    selected_projects: string;
-    olympiad_participations: string;
-    olympiad_description: string;
-    location: string;
-    location_value: string;
+  hero: {
+    eyebrow: string;
+    introduction: string;
+    projects_cta: string;
+    github_cta: string;
   };
-  bento: {
-    hero_bio: string;
-    philosophy_title: string;
-    philosophy_text: string;
-    preferences_title: string;
-    preferences_text: string;
-    status_title: string;
-    status_text: string;
-    hobbies_title: string;
-    hobbies_text: string;
-    projects_title: string;
-    projects_subtitle: string;
+  projects: {
+    eyebrow: string;
+    title: string;
+    introduction: string;
+    all: string;
+    android: string;
+    web: string;
+    shown: string;
+    play_store: string;
+    source: string;
+    visit_website: string;
   };
+  record: {
+    eyebrow: string;
+    title: string;
+    summary: string;
+    introduction: string;
+    year: string;
+    competition: string;
+    discipline: string;
+    result: string;
+  };
+  contact: { message: string };
+  footer: { built_with: string; back_to_top: string };
+  ordinal: { suffix: string };
 }
 
 export interface AlternateUrl {

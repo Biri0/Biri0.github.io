@@ -1,36 +1,15 @@
 ---
-import {
-    getCurrentLocale,
-    getAlternateLocale,
-    getLocalizedUrl,
-    t,
-} from "../utils/i18n.ts";
+import type { Locale } from "../utils/i18n.ts";
 
-const currentLocale = getCurrentLocale(Astro.url.pathname);
-const alternateLocale = getAlternateLocale(currentLocale);
-const currentPath = Astro.url.pathname
-    .replace(/^\/(en|it)\//, "/")
-    .replace(/^\/$/, "");
-const alternatePath = currentPath === "/" ? "" : currentPath;
-const alternateUrl = getLocalizedUrl(alternatePath, alternateLocale);
+export interface Props {
+  currentLocale: Locale;
+  label: string;
+}
 
-const currentLangLabel = currentLocale === "en" ? "EN" : "IT";
-const alternateLangLabel = alternateLocale === "en" ? "EN" : "IT";
-const switchText = t("nav.language", currentLocale);
+const { currentLocale, label } = Astro.props;
 ---
 
-<div class="language-switcher inline-flex items-center gap-1 text-sm font-medium">
-  <span class="text-zinc-700 dark:text-zinc-200" aria-label={`Current language: ${currentLangLabel}`}>
-    {currentLangLabel}
-  </span>
-  <span class="select-none text-zinc-400">/</span>
-  <a
-    href={alternateUrl}
-    class="text-zinc-600 dark:text-zinc-400 no-underline outline-none transition hover:text-zinc-800 dark:hover:text-zinc-200 focus-visible:ring-2 focus-visible:ring-sky-500/60 rounded"
-    hreflang={alternateLocale}
-    aria-label={`Switch to ${alternateLangLabel}`}
-    title={`${switchText} (${alternateLangLabel})`}
-  >
-    {alternateLangLabel}
-  </a>
+<div class="language" aria-label={label}>
+  <a href="/" lang="en" hreflang="en" aria-label="English" aria-current={currentLocale === "en" ? "page" : undefined}>EN</a>
+  <a href="/it/" lang="it" hreflang="it" aria-label="Italiano" aria-current={currentLocale === "it" ? "page" : undefined}>IT</a>
 </div>

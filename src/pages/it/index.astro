@@ -41,11 +41,15 @@ const projects: ProcessedProject[] = (
                 : p.descriptions && p.descriptions.en
                   ? p.descriptions.en
                   : "",
+        type:
+            p.types && p.types[currentLocale]
+                ? p.types[currentLocale]
+                : p.types.en,
+        category: p.category,
         tech: p.tech || [],
         repo: p.repo || "",
         live: p.live || "",
         play: p.play || "",
-        package: p.package || "",
     }),
 );
 
@@ -61,6 +65,10 @@ const participations: Record<string, ProcessedParticipation> = {};
 
         participations[p.id] = {
             name,
+            discipline:
+                p.discipline && p.discipline[currentLocale]
+                    ? p.discipline[currentLocale]
+                    : p.discipline.en,
             url: p.url,
             entries: (p.entries || []).sort((a, b) => b.year - a.year),
         };
@@ -79,8 +87,8 @@ function ordinal(n: number | string) {
 
 <IndexLayout
     currentLocale={currentLocale}
-    title={site.title + " — " + labels.nav.home}
-    description={site.description[currentLocale] || site.description.en}
+    title={labels.meta.title}
+    description={labels.meta.description}
     canonicalUrl="https://rfmariano.it/it/"
     ogLocale="it_IT"
     ogUrl="https://rfmariano.it/it/"
@@ -93,7 +101,6 @@ function ordinal(n: number | string) {
 >
     <IndexContent
         site={site}
-        currentLocale={currentLocale}
         labels={labels}
         projects={projects}
         participations={participations}

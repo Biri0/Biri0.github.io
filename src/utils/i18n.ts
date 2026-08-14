@@ -110,47 +110,57 @@ export function getAlternateLanguages(path: string, currentLocale: Locale) {
  */
 export function getLabels(locale: Locale) {
   return {
-    buttons: {
-      site: t("buttons.site", locale),
-      play: t("buttons.play", locale),
-      repo: t("buttons.repo", locale),
-      email: t("buttons.email", locale),
+    meta: {
+      title: t("meta.title", locale),
+      description: t("meta.description", locale),
     },
-    project_card: {
-      package_label: t("project_card.package_label", locale),
-      live_title: t("project_card.live_title", locale),
-      play_title: t("project_card.play_title", locale),
-      repo_title: t("project_card.repo_title", locale),
-      techs_label: t("project_card.techs_label", locale),
+    accessibility: {
+      skip_content: t("accessibility.skip_content", locale),
+      primary_navigation: t("accessibility.primary_navigation", locale),
+      choose_language: t("accessibility.choose_language", locale),
+      introduction: t("accessibility.introduction", locale),
+      filter_projects: t("accessibility.filter_projects", locale),
     },
     nav: {
-      home: t("nav.home", locale),
       projects: t("nav.projects", locale),
+      record: t("nav.record", locale),
       contact: t("nav.contact", locale),
-      language: t("nav.language", locale),
+      home_label: t("nav.home_label", locale),
     },
-    headings: {
-      hero_title: t("headings.hero_title", locale),
-      hero_subtitle: t("headings.hero_subtitle", locale),
-      selected_projects: t("headings.selected_projects", locale),
-      olympiad_participations: t("headings.olympiad_participations", locale),
-      olympiad_description: t("headings.olympiad_description", locale),
-      location: t("headings.location", locale),
-      location_value: t("headings.location_value", locale),
+    hero: {
+      eyebrow: t("hero.eyebrow", locale),
+      introduction: t("hero.introduction", locale),
+      projects_cta: t("hero.projects_cta", locale),
+      github_cta: t("hero.github_cta", locale),
     },
-    bento: {
-      hero_bio: t("bento.hero_bio", locale),
-      philosophy_title: t("bento.philosophy_title", locale),
-      philosophy_text: t("bento.philosophy_text", locale),
-      preferences_title: t("bento.preferences_title", locale),
-      preferences_text: t("bento.preferences_text", locale),
-      status_title: t("bento.status_title", locale),
-      status_text: t("bento.status_text", locale),
-      hobbies_title: t("bento.hobbies_title", locale),
-      hobbies_text: t("bento.hobbies_text", locale),
-      projects_title: t("bento.projects_title", locale),
-      projects_subtitle: t("bento.projects_subtitle", locale),
+    projects: {
+      eyebrow: t("projects.eyebrow", locale),
+      title: t("projects.title", locale),
+      introduction: t("projects.introduction", locale),
+      all: t("projects.all", locale),
+      android: t("projects.android", locale),
+      web: t("projects.web", locale),
+      shown: t("projects.shown", locale),
+      play_store: t("projects.play_store", locale),
+      source: t("projects.source", locale),
+      visit_website: t("projects.visit_website", locale),
     },
+    record: {
+      eyebrow: t("record.eyebrow", locale),
+      title: t("record.title", locale),
+      summary: t("record.summary", locale),
+      introduction: t("record.introduction", locale),
+      year: t("record.year", locale),
+      competition: t("record.competition", locale),
+      discipline: t("record.discipline", locale),
+      result: t("record.result", locale),
+    },
+    contact: { message: t("contact.message", locale) },
+    footer: {
+      built_with: t("footer.built_with", locale),
+      back_to_top: t("footer.back_to_top", locale),
+    },
+    ordinal: { suffix: t("ordinal.suffix", locale) },
   };
 }
 

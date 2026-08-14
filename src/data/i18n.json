@@ -1,150 +1,78 @@
 {
-  "nav": {
-    "home": { "en": "Home", "it": "Home" },
-    "projects": { "en": "Projects", "it": "Progetti" },
-    "contact": { "en": "Contact me", "it": "Contattami" },
-    "language": { "en": "Language", "it": "Lingua" }
-  },
-  "buttons": {
-    "site": { "en": "Site", "it": "Sito" },
-    "play": { "en": "Play Store", "it": "Play Store" },
-    "repo": { "en": "Repo", "it": "Repo" },
-    "email": { "en": "Email", "it": "Email" }
-  },
-  "socials": {
-    "github": { "en": "GitHub", "it": "GitHub" },
-    "storygraph": { "en": "StoryGraph", "it": "StoryGraph" }
-  },
-  "headings": {
-    "hero_title": {
-      "en": "Hi, I'm Mariano 👋",
-      "it": "Ciao, sono Mariano 👋"
+  "meta": {
+    "title": {
+      "en": "Mariano Riefolo — Software Developer",
+      "it": "Mariano Riefolo — Sviluppatore software"
     },
-    "hero_subtitle": {
-      "en": "I focus on building useful projects and shipping mobile apps.",
-      "it": "Mi occupo di sviluppare progetti utili e pubblicare app mobile."
-    },
-    "selected_projects": {
-      "en": "Selected Projects",
-      "it": "Progetti selezionati"
-    },
-    "olympiad_participations": {
-      "en": "Olympiad participations",
-      "it": "Partecipazioni alle olimpiadi"
-    },
-    "olympiad_description": {
-      "en": "National programming competitions and my rankings over the years.",
-      "it": "Competizioni nazionali di programmazione e i miei piazzamenti nel corso degli anni."
-    },
-    "location": { "en": "Location", "it": "Sede" },
-    "location_value": { "en": "Remote / Europe", "it": "Remote / Europa" }
-  },
-  "bento": {
-    "hero_bio": {
-      "en": "I'm a CS student who loves building open-source tools and solving backend problems. The projects I built started as personal needs. I lean heavily towards efficiency and user privacy, whether I'm writing a Rust scraper or shipping an offline-first app.",
-      "it": "Sono uno studente di informatica che ama sviluppare strumenti open-source e risolvere problemi lato backend. I progetti che ho sviluppato li ho realizzati semplicemente perché ne avevo bisogno. Punto molto sull'efficienza e sulla privacy, che stia scrivendo uno scraper in Rust o un'app offline-first."
-    },
-    "philosophy_title": {
-      "en": "My Approach",
-      "it": "Il Mio Approccio"
-    },
-    "philosophy_text": {
-      "en": "My Olympiad background taught me to care deeply about efficiency (my proudest moment was coding a segment tree with lazy propagation before ChatGPT existed). Lately, though, I use AI to help me ship faster so I can focus on solving real problems for real people.",
-      "it": "Le olimpiadi mi hanno insegnato l'importanza dell'efficienza (il momento di cui vado più fiero è stato programmare un segment tree con lazy propagation prima che esistesse ChatGPT). Ultimamente, però, uso l'IA per sviluppare più velocemente e concentrarmi sulla risoluzione di problemi diversi da quelli accademici."
-    },
-    "preferences_title": {
-      "en": "What I Do",
-      "it": "Cosa Faccio"
-    },
-    "preferences_text": {
-      "en": "I strongly prefer backend and systems programming over frontend design. In the past, I used to make indie games (especially in GDScript) and self-host a lot of my own services.",
-      "it": "Preferisco di gran lunga il backend e la programmazione di sistemi al design frontend. In passato, creavo giochi indie (specialmente in GDScript) e facevo self-hosting di molti dei miei servizi."
-    },
-    "status_title": {
-      "en": "Status",
-      "it": "Stato"
-    },
-    "status_text": {
-      "en": "🟢 Uni student • Open to part-time backend roles",
-      "it": "🟢 Studente universitario • Aperto a ruoli backend part-time"
-    },
-    "hobbies_title": {
-      "en": "Beyond Code",
-      "it": "Oltre il Codice"
-    },
-    "hobbies_text": {
-      "en": "I read mostly non-fiction (although I enjoy some fiction too), and I listen to a lot of music. I'm also a big fan of F-Droid and the open-source community.",
-      "it": "Leggo principalmente saggistica (anche se apprezzo qualche romanzo) e ascolto molta musica. Sono anche un grande fan di F-Droid e della community open-source."
-    },
-    "projects_title": {
-      "en": "Things I built because I needed them",
-      "it": "Cose che ho creato perché ne avevo bisogno"
-    },
-    "projects_subtitle": {
-      "en": "From privacy-first expense trackers to mapping Italian dialects.",
-      "it": "Da un tracker di spese attento alla privacy a una mappa dei dialetti italiani."
+    "description": {
+      "en": "Mariano Riefolo — Computer Science student and software developer building useful, privacy-conscious software.",
+      "it": "Mariano Riefolo — studente di Informatica e sviluppatore software che crea prodotti utili e attenti alla privacy."
     }
   },
-  "project_card": {
-    "package_label": { "en": "Package", "it": "Package" },
-    "live_title": { "en": "Open site", "it": "Apri sito" },
-    "play_title": { "en": "Open on Play Store", "it": "Apri su Play Store" },
-    "repo_title": { "en": "View repository", "it": "Vedi repository" },
-    "techs_label": { "en": "Technologies", "it": "Tecnologie" }
+  "accessibility": {
+    "skip_content": { "en": "Skip to content", "it": "Vai al contenuto" },
+    "primary_navigation": { "en": "Primary navigation", "it": "Navigazione principale" },
+    "choose_language": { "en": "Choose language", "it": "Scegli la lingua" },
+    "introduction": { "en": "Introduction", "it": "Introduzione" },
+    "filter_projects": { "en": "Filter projects", "it": "Filtra i progetti" }
   },
-  "participations": {
-    "table_headers": {
-      "competition": { "en": "Competition", "it": "Competizione" },
-      "year": { "en": "Year", "it": "Anno" },
-      "rank": { "en": "Rank", "it": "Piazzamento" }
+  "nav": {
+    "projects": { "en": "Projects", "it": "Progetti" },
+    "record": { "en": "Competitions", "it": "Competizioni" },
+    "contact": { "en": "Contact", "it": "Contatti" },
+    "home_label": { "en": "Mariano Riefolo, home", "it": "Mariano Riefolo, home page" }
+  },
+  "hero": {
+    "eyebrow": { "en": "Computer Science · Italy", "it": "Informatica · Italia" },
+    "introduction": {
+      "en": "I’m Mariano, a Computer Science student who learns by building software I need. Here are a few projects I’ve taken from idea to working product.",
+      "it": "Sono Mariano, uno studente di Informatica che impara creando il software di cui ha bisogno. Ecco alcuni progetti che ho trasformato da idee in prodotti funzionanti."
+    },
+    "projects_cta": { "en": "See selected projects", "it": "Scopri i progetti selezionati" },
+    "github_cta": { "en": "Inspect my GitHub", "it": "Esplora il mio GitHub" }
+  },
+  "projects": {
+    "eyebrow": { "en": "01 / Selected work", "it": "01 / Lavori selezionati" },
+    "title": { "en": "Built, not pitched", "it": "Costruiti, non solo immaginati" },
+    "introduction": {
+      "en": "A selection of mobile and web projects shaped by practical needs and technical curiosity.",
+      "it": "Una selezione di progetti mobile e web nati da esigenze pratiche e curiosità tecnica."
+    },
+    "all": { "en": "All", "it": "Tutti" },
+    "android": { "en": "Android", "it": "Android" },
+    "web": { "en": "Web", "it": "Web" },
+    "shown": { "en": "shown", "it": "visibili" },
+    "play_store": { "en": "Play Store", "it": "Play Store" },
+    "source": { "en": "Source", "it": "Codice" },
+    "visit_website": { "en": "Visit website", "it": "Visita il sito" }
+  },
+  "record": {
+    "eyebrow": { "en": "02 / Competition log", "it": "02 / Registro competizioni" },
+    "title": { "en": "Under constraints", "it": "Sotto pressione" },
+    "summary": {
+      "en": "Five appearances across Italy’s national cybersecurity and informatics competitions.",
+      "it": "Cinque partecipazioni alle competizioni nazionali italiane di cybersecurity e informatica."
+    },
+    "introduction": {
+      "en": "I took part in Olicyber, a national program built around cybersecurity training and challenges, and Olinfo, Italy’s individual programming competition for high-school students.",
+      "it": "Ho partecipato a Olicyber, il programma nazionale di formazione e competizioni di cybersecurity, e a Olinfo, la gara italiana individuale di programmazione per studenti delle scuole superiori."
+    },
+    "year": { "en": "Year", "it": "Anno" },
+    "competition": { "en": "Competition", "it": "Competizione" },
+    "discipline": { "en": "Discipline", "it": "Disciplina" },
+    "result": { "en": "Result", "it": "Risultato" }
+  },
+  "contact": {
+    "message": {
+      "en": "I’m open to part-time opportunities and thoughtful collaborations across Italy.",
+      "it": "Sono disponibile per opportunità part-time e collaborazioni interessanti in tutta Italia."
     }
   },
   "footer": {
     "built_with": { "en": "Built with Astro", "it": "Realizzato con Astro" },
-    "copyright": {
-      "en": "© {year} {title}",
-      "it": "© {year} {title}"
-    }
+    "back_to_top": { "en": "Back to top", "it": "Torna su" }
   },
-  "forms": {
-    "contact_link_title": {
-      "en": "Email me",
-      "it": "Invia email"
-    }
-  },
-  "misc": {
-    "projects_list_aria": {
-      "en": "Projects list",
-      "it": "Elenco dei progetti"
-    },
-    "projects_role": {
-      "en": "list",
-      "it": "list"
-    }
-  },
-  "code_snippet": {
-    "copy": { "en": "Copy", "it": "Copia" },
-    "copied": { "en": "Copied", "it": "Copiato" },
-    "copied_clipboard": {
-      "en": "Copied to clipboard",
-      "it": "Copiato negli appunti"
-    },
-    "copy_failed": { "en": "Copy failed", "it": "Copia fallita" },
-    "nothing_to_copy": { "en": "Nothing to copy", "it": "Niente da copiare" },
-    "show_more": { "en": "Show more", "it": "Mostra altro" },
-    "show_less": { "en": "Show less", "it": "Mostra meno" },
-    "expanded_code": { "en": "Expanded code", "it": "Codice espanso" },
-    "collapsed_code_note": {
-      "en": "Collapsed code (reload page to restore server-side collapsed view)",
-      "it": "Codice compattato (ricarica la pagina per ripristinare la versione server-side)"
-    }
-  },
-  "footer_extra": {
-    "note": {
-      "en": "Built with Astro • Available for freelance & full-time roles",
-      "it": "Realizzato con Astro • Disponibile per progetti freelance e opportunità a tempo pieno"
-    },
-    "email_label": { "en": "Email", "it": "Email" },
-    "github_label": { "en": "GitHub", "it": "GitHub" }
+  "ordinal": {
+    "suffix": { "en": "", "it": "º" }
   }
 }

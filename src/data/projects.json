@@ -7,9 +7,14 @@
         "it": "Denaro"
       },
       "descriptions": {
-        "en": "Denaro is a private, offline-first personal finance app for Android. Manage accounts, income, expenses, transfers, debts, and recurring activity; explore monthly trends and customizable categories while keeping financial data on your device in an encrypted local database.",
-        "it": "Denaro è un'app Android privata e offline-first per la gestione delle finanze personali. Gestisci conti, entrate, uscite, trasferimenti, debiti e operazioni ricorrenti; consulta gli andamenti mensili e personalizza le categorie mantenendo i dati finanziari sul dispositivo in un database locale crittografato."
+        "en": "An offline-first personal-finance app for accounts, transactions, debts, recurring activity, and trends—with data encrypted on the device.",
+        "it": "Un'app di finanza personale offline-first per conti, transazioni, debiti, operazioni ricorrenti e andamenti, con i dati crittografati sul dispositivo."
       },
+      "types": {
+        "en": "Private finance · Android",
+        "it": "Finanza privata · Android"
+      },
+      "category": "android",
       "tech": ["Kotlin", "Jetpack Compose", "Room", "SQLCipher"],
       "repo": "https://github.com/Biri0/denaro",
       "live": "",
@@ -22,9 +27,14 @@
         "it": "Dialettario"
       },
       "descriptions": {
-        "en": "Dialettario is a collaborative dictionary of Italian dialects that allows you to discover, add, and consult local terms by region, province, and city.",
-        "it": "Dialettario è un dizionario collaborativo dei dialetti italiani che permette di scoprire, aggiungere e consultare termini locali per regione, provincia e città."
+        "en": "A collaborative map of Italian dialect words, organized by region, province, and city—built to preserve local language through shared knowledge.",
+        "it": "Una mappa collaborativa delle parole dei dialetti italiani, organizzata per regione, provincia e città, nata per preservare le lingue locali attraverso la conoscenza condivisa."
       },
+      "types": {
+        "en": "Language archive · Web",
+        "it": "Archivio linguistico · Web"
+      },
+      "category": "web",
       "tech": ["T3", "TypeScript", "Next.js", "Expo"],
       "repo": "",
       "live": "https://dialettario.rfmariano.it/"
@@ -36,9 +46,14 @@
         "it": "NStates"
       },
       "descriptions": {
-        "en": "An Android client for NationStates built to provide a better native experience than the browser version.",
-        "it": "Un client Android per NationStates sviluppato per offrire un'esperienza nativa migliore rispetto alla versione browser."
+        "en": "A focused native Android client for NationStates, designed as a practical alternative to navigating the browser interface.",
+        "it": "Un client Android nativo e mirato per NationStates, pensato come alternativa pratica alla navigazione tramite browser."
       },
+      "types": {
+        "en": "Native client · Android",
+        "it": "Client nativo · Android"
+      },
+      "category": "android",
       "tech": ["Jetpack Compose", "Kotlin", "Android"],
       "repo": "https://github.com/Biri0/NStates",
       "live": ""
@@ -50,9 +65,14 @@
         "it": "Figlet Browser"
       },
       "descriptions": {
-        "en": "Browse and preview hundreds of FIGlet ASCII art fonts directly in your browser. Search by name, filter by tags, pin favorites, and preview custom text in any font with a clean, responsive UI.",
-        "it": "Sfoglia e visualizza centinaia di font ASCII art FIGlet direttamente nel browser. Cerca per nome, filtra per tag, salva preferiti e vedi l'anteprima di un testo personalizzato con qualsiasi font, in un'interfaccia pulita e reattiva."
+        "en": "Explore, search, filter, and save FIGlet fonts; then preview any text instantly without leaving the browser.",
+        "it": "Esplora, cerca, filtra e salva i font FIGlet, quindi visualizza subito l'anteprima di qualsiasi testo senza lasciare il browser."
       },
+      "types": {
+        "en": "Creative utility · Web",
+        "it": "Strumento creativo · Web"
+      },
+      "category": "web",
       "tech": ["React", "TypeScript", "Vite", "Figlet.js", "Bun", "Tailwind CSS"],
       "repo": "https://github.com/Biri0/figlet-browser",
       "live": "https://ascii.rfmariano.it"

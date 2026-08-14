@@ -1,13 +1,8 @@
 ---
-/*
-  Shared IndexLayout component to reduce code duplication between EN/IT index pages
-  - Handles common HTML structure, meta tags, and styling
-  - Accepts props for locale-specific content and metadata
-*/
-
 import { Image } from "astro:assets";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import "../styles/global.css";
+import "../styles/portfolio.css";
 import type { Locale, SiteData, Labels, AlternateUrl } from "../types/index.ts";
 
 export interface Props {
@@ -22,110 +17,63 @@ export interface Props {
   labels: Labels;
 }
 
-const {
-  currentLocale,
-  title,
-  description,
-  canonicalUrl,
-  ogLocale,
-  ogUrl,
-  alternateUrls,
-  site,
-  labels,
-} = Astro.props;
+const { currentLocale, title, description, canonicalUrl, ogLocale, ogUrl, alternateUrls, site, labels } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={currentLocale}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#09090b" />
-
-    <!-- Open Graph / Facebook -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f9fa" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#17191d" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={ogLocale} />
     <meta property="og:url" content={ogUrl} />
-    <meta property="og:image" content="https://rfmariano.it/me.jpeg" />
-
-    <!-- Twitter Card -->
+    <meta property="og:image" content={site.seo.image} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://rfmariano.it/me.jpeg" />
-
-    <!-- Canonical and hreflang links -->
+    <meta name="twitter:image" content={site.seo.image} />
     <link rel="canonical" href={canonicalUrl} />
-    {alternateUrls.map(({ hreflang, href }) => (
-      <link rel="alternate" hreflang={hreflang} href={href} />
-    ))}
-
-    <link rel="icon" type="image/jpeg" href="/me.jpeg" />
+    {alternateUrls.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
+    <link rel="icon" href={site.favicon} />
   </head>
+  <body id="top" class="portfolio-body">
+    <a class="skip-link" href="#main">{labels.accessibility.skip_content}</a>
 
-  <body class="min-h-dvh bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
-    <div class="max-w-[1200px] mx-auto my-8 md:my-10 px-4 md:px-8">
-      <header class="mb-10 md:mb-12 pb-6 flex flex-wrap items-center justify-between gap-4 md:gap-6 border-b border-zinc-200 dark:border-white/10">
-        <a
-          class="group inline-flex items-center gap-4 no-underline text-inherit transition will-change-transform hover:-translate-y-0.5"
-          href={currentLocale === "it" ? "/it/" : "/"}
-          aria-label="Site brand"
-        >
-          <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl border-2 border-teal-300/20 shadow-lg overflow-hidden transition group-hover:border-teal-400/50 group-hover:shadow-teal-300/25">
-            <Image
-              src="/me.jpeg"
-              alt="Mariano Riefolo"
-              width={64}
-              height={64}
-              format="webp"
-              quality={90}
-              loading="eager"
-              style="width: 100%; height: 100%; object-fit: cover;"
-            />
-          </div>
-          <div class="leading-tight">
-            <div class="text-base md:text-lg font-semibold text-zinc-900 dark:bg-gradient-to-tr dark:from-white dark:to-sky-300 dark:bg-clip-text dark:text-transparent">
-              {site.title}
-            </div>
-            <div class="text-sm md:text-base text-sky-800 dark:text-sky-300/90 mt-0.5">
-              {site.description[currentLocale] || site.description.en}
-            </div>
-          </div>
+    <header class="site-header">
+      <nav class="nav wrap" aria-label={labels.accessibility.primary_navigation}>
+        <a class="wordmark" href="#top" aria-label={labels.nav.home_label}>
+          <Image class="wordmark-portrait" src="/me.jpeg" alt="" width={44} height={44} format="webp" quality={90} loading="eager" />
+          <span class="wordmark-name">{site.title}</span>
         </a>
-        <nav aria-label="Primary" class="flex items-center gap-2">
-          <a
-            class="inline-flex items-center rounded-md border border-zinc-950/10 dark:border-white/15 bg-white/40 dark:bg-white/5 px-3 py-2 text-sm font-medium text-inherit no-underline backdrop-blur transition hover:bg-teal-600/10 hover:border-teal-600/40 hover:text-teal-700 dark:hover:text-teal-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/60"
-            href={"mailto:" + site.email}
-            >{labels.nav.contact}</a
-          >
-          <div class="ml-2">
-            <LanguageSwitcher currentPath={Astro.url.pathname} />
-          </div>
-        </nav>
-      </header>
+        <div class="nav-links">
+          <a href="#projects">{labels.nav.projects}</a>
+          <a href="#record">{labels.nav.record}</a>
+          <a href="#contact">{labels.nav.contact}</a>
+          <LanguageSwitcher currentLocale={currentLocale} label={labels.accessibility.choose_language} />
+        </div>
+      </nav>
+    </header>
 
-      <slot />
+    <slot />
 
-      <footer class="mt-10 md:mt-12 pt-6 text-center text-sm text-zinc-600 dark:text-zinc-400">
-        <div>Made with ❤️ using Astro</div>
-        <div class="mt-1">© <span id="year">2025</span> {site.title}</div>
-      </footer>
-    </div>
+    <footer class="site-footer">
+      <div class="footer-inner wrap">
+        <span>© <span id="year"></span> {site.title} · {labels.footer.built_with}</span>
+        <a class="back-top" href="#top">{labels.footer.back_to_top} <span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
 
     <script>
-      (function () {
-        const y = document.getElementById("year");
-        if (y) y.textContent = String(new Date().getFullYear());
-      })();
-    </script>
-    <script>
-      import "/src/scripts/language-switcher.ts";
+      const year = document.getElementById("year");
+      if (year) year.textContent = String(new Date().getFullYear());
     </script>
   </body>
 </html>
