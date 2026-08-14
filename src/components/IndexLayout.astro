@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+import portrait from "../assets/me-avatar.jpeg";
 import "../styles/global.css";
 import "../styles/portfolio.css";
 import type { Locale, SiteData, Labels, AlternateUrl } from "../types/index.ts";
@@ -42,7 +43,7 @@ const { currentLocale, title, description, canonicalUrl, ogLocale, ogUrl, altern
     <meta name="twitter:image" content={site.seo.image} />
     <link rel="canonical" href={canonicalUrl} />
     {alternateUrls.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
-    <link rel="icon" href={site.favicon} />
+    <link rel="icon" type="image/png" sizes="48x48" href={site.favicon} />
   </head>
   <body id="top" class="portfolio-body">
     <a class="skip-link" href="#main">{labels.accessibility.skip_content}</a>
@@ -50,7 +51,7 @@ const { currentLocale, title, description, canonicalUrl, ogLocale, ogUrl, altern
     <header class="site-header">
       <nav class="nav wrap" aria-label={labels.accessibility.primary_navigation}>
         <a class="wordmark" href="#top" aria-label={labels.nav.home_label}>
-          <Image class="wordmark-portrait" src="/me.jpeg" alt="" width={44} height={44} format="webp" quality={90} loading="eager" />
+          <Image class="wordmark-portrait" src={portrait} alt="" width={44} height={44} densities={[1, 2, 3]} format="webp" quality={90} loading="eager" />
           <span class="wordmark-name">{site.title}</span>
         </a>
         <div class="nav-links">
