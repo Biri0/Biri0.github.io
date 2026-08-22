@@ -36,6 +36,7 @@ export interface ProjectData {
   repo: string;
   live: string;
   play: string;
+  fdroid: string;
 }
 
 export interface ProcessedProject {
@@ -48,6 +49,7 @@ export interface ProcessedProject {
   repo: string;
   live: string;
   play: string;
+  fdroid: string;
 }
 
 export interface ParticipationEntry {
@@ -101,6 +103,7 @@ export interface Labels {
     web: string;
     shown: string;
     play_store: string;
+    fdroid: string;
     source: string;
     visit_website: string;
   };

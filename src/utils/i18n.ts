@@ -142,6 +142,7 @@ export function getLabels(locale: Locale) {
       web: t("projects.web", locale),
       shown: t("projects.shown", locale),
       play_store: t("projects.play_store", locale),
+      fdroid: t("projects.fdroid", locale),
       source: t("projects.source", locale),
       visit_website: t("projects.visit_website", locale),
     },

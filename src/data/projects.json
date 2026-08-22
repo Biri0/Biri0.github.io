@@ -18,7 +18,8 @@
       "tech": ["Kotlin", "Jetpack Compose", "Room", "SQLCipher"],
       "repo": "https://github.com/Biri0/denaro",
       "live": "",
-      "play": "https://play.google.com/store/apps/details?id=it.rfmariano.denaro"
+      "play": "https://play.google.com/store/apps/details?id=it.rfmariano.denaro",
+      "fdroid": "https://f-droid.org/it/packages/it.rfmariano.denaro/"
     },
     {
       "id": "proj-dialettario",
@@ -37,7 +38,8 @@
       "category": "web",
       "tech": ["T3", "TypeScript", "Next.js", "Expo"],
       "repo": "",
-      "live": "https://dialettario.rfmariano.it/"
+      "live": "https://dialettario.rfmariano.it/",
+      "fdroid": ""
     },
     {
       "id": "proj-nstates",
@@ -56,7 +58,8 @@
       "category": "android",
       "tech": ["Jetpack Compose", "Kotlin", "Android"],
       "repo": "https://github.com/Biri0/NStates",
-      "live": ""
+      "live": "",
+      "fdroid": ""
     },
     {
       "id": "proj-figlet-browser",
@@ -75,7 +78,8 @@
       "category": "web",
       "tech": ["React", "TypeScript", "Vite", "Figlet.js", "Bun", "Tailwind CSS"],
       "repo": "https://github.com/Biri0/figlet-browser",
-      "live": "https://ascii.rfmariano.it"
+      "live": "https://ascii.rfmariano.it",
+      "fdroid": ""
     }
   ]
 }

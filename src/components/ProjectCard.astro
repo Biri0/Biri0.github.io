@@ -22,6 +22,7 @@ const displayNumber = String(number).padStart(2, "0");
     <p class="tech">{project.tech.join(" · ")}</p>
     <div class="project-links">
       {project.play && <a href={project.play} target="_blank" rel="noopener noreferrer">{labels.play_store} <span aria-hidden="true">↗</span></a>}
+      {project.fdroid && <a href={project.fdroid} target="_blank" rel="noopener noreferrer">{labels.fdroid} <span aria-hidden="true">↗</span></a>}
       {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">{labels.visit_website} <span aria-hidden="true">↗</span></a>}
       {project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer">{labels.source} <span aria-hidden="true">↗</span></a>}
     </div>

@@ -43,6 +43,7 @@
     "web": { "en": "Web", "it": "Web" },
     "shown": { "en": "shown", "it": "visibili" },
     "play_store": { "en": "Play Store", "it": "Play Store" },
+    "fdroid": { "en": "F-Droid", "it": "F-Droid" },
     "source": { "en": "Source", "it": "Codice" },
     "visit_website": { "en": "Visit website", "it": "Visita il sito" }
   },
