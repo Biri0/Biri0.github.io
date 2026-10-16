@@ -1,0 +1,215 @@
+---
+import PrivacyLayout from "../../components/PrivacyLayout.astro";
+---
+
+<PrivacyLayout
+    title="Privacy Policy - PinoBlu"
+    appName="PinoBlu"
+    lastUpdated="16 October 2026"
+    accentColor="#3498db"
+>
+    <div class="my-5 rounded-md border-l-4 border-emerald-500/80 bg-emerald-50/70 dark:bg-emerald-500/10 px-4 py-3 text-emerald-900 dark:text-emerald-200">
+        <strong>In summary:</strong> PinoBlu is an online multiplayer game. It has no
+        account system, does not ask for your email or any personal details, and the
+        only information you provide is a nickname you choose yourself. The game
+        contains no advertising, analytics, or third-party tracking services.
+    </div>
+
+    <h2>1. Who we are</h2>
+    <p>
+        PinoBlu is a multiplayer game developed by Mariano Riefolo and distributed
+        for Android through Google Play. Playing online connects your device to a
+        game server operated by the developer at
+        <code>wss://pinoblu.rfmariano.it</code>. This policy explains what data the
+        game and that server handle, and how.
+    </p>
+
+    <h2>2. Data you provide</h2>
+    <p>
+        PinoBlu does not require an account, registration, login, email address, or
+        password. The only piece of personal data you give the game is a
+        <strong>nickname</strong>:
+    </p>
+    <ul>
+        <li>
+            You choose it yourself in the game. It is limited to 1–16 printable
+            characters and defaults to "Pino" if you do not change it.
+        </li>
+        <li>
+            It is saved on your device and sent to the game server only when you play
+            online, so other players and the leaderboard can identify you.
+        </li>
+    </ul>
+    <p>
+        Please do not enter your real name or any other personal information as your
+        nickname, because it is visible to other players and may be published on
+        public leaderboards.
+    </p>
+
+    <h2>3. Data stored on your device</h2>
+    <p>
+        PinoBlu keeps a single local save file in the app's private storage
+        (<code>save.json</code>, inside the PinoBlu data folder). It contains only
+        game data:
+    </p>
+    <ul>
+        <li>Your best score for each difficulty</li>
+        <li>Your in-game coins and unlocked skins and backgrounds</li>
+        <li>Audio, display, and gameplay preferences</li>
+        <li>Your chosen nickname</li>
+        <li>Short match receipts used to avoid awarding the same result twice</li>
+    </ul>
+    <p>
+        This file lives inside the app's private storage and is not readable by other
+        apps under normal operating conditions. The game does not store any
+        credentials, passwords, or authentication tokens on your device.
+    </p>
+
+    <h2>4. Network communications</h2>
+    <p>
+        When you play online, the game opens a single encrypted connection (WebSocket
+        over TLS) to the developer's game server at
+        <code>wss://pinoblu.rfmariano.it/ws</code>. Over that connection the game
+        sends only what is needed to run the match:
+    </p>
+    <ul>
+        <li>Your nickname</li>
+        <li>A random value generated fresh for each connection (not a device identifier)</li>
+        <li>A platform code identifying the game engine build</li>
+        <li>Your movement input during a match</li>
+        <li>Matchmaking preferences such as difficulty, skin, and background</li>
+        <li>The room code when you join a private room</li>
+    </ul>
+    <p>
+        The game does not send your name, email, phone number, contacts, location,
+        device identifiers, advertising ID, or any hardware or operating-system
+        information.
+    </p>
+    <p>
+        As with any online service, the game server can see the IP address your device
+        connects from in order to route traffic and protect against abuse (for
+        example, anti-spoofing checks). The server uses the IP address only
+        transiently for this purpose and does not store or log it.
+    </p>
+
+    <h2>5. The game server, other players, and leaderboards</h2>
+    <p>
+        The game server is authoritative, meaning it runs the match, and is operated
+        by the developer. It keeps the following in memory while you are connected,
+        and discards it when you leave or when the server restarts:
+    </p>
+    <ul>
+        <li>Your session, nickname, platform, and preferences</li>
+        <li>Your match state and in-progress scores</li>
+    </ul>
+    <p>
+        When you play with others, the players in your lobby can see your nickname and
+        the skin and background you chose. In addition, the server keeps a
+        <strong>public solo leaderboard</strong>: your best score for each difficulty,
+        together with your nickname, is stored on the server and shown to any player
+        who opens the leaderboard. This leaderboard is the only information that
+        persists after you disconnect.
+    </p>
+
+    <h2>6. Data we do not collect</h2>
+    <p>PinoBlu does not collect, transmit, share, or sell:</p>
+    <ul>
+        <li>Names, email addresses, phone numbers, or postal addresses</li>
+        <li>Account credentials or passwords (there is no account system)</li>
+        <li>Device identifiers, advertising IDs, or hardware or OS information</li>
+        <li>Location data</li>
+        <li>Contacts, photos, files, camera, or microphone data</li>
+        <li>App usage analytics, behavioral profiling, or crash reports</li>
+    </ul>
+
+    <h2>7. App permissions</h2>
+    <p>PinoBlu requests only two Android permissions:</p>
+    <ul>
+        <li>
+            <strong>Internet access:</strong> required to connect to the game server
+            for online play
+        </li>
+        <li>
+            <strong>Network state:</strong> to detect connectivity so the game can
+            handle going online or offline
+        </li>
+    </ul>
+    <p>
+        The game does not request access to contacts, location, camera, microphone,
+        storage, phone state, or any other sensitive permissions. Single-player modes
+        work without any network connection.
+    </p>
+
+    <h2>8. Advertising, analytics, and third-party services</h2>
+    <p>
+        PinoBlu contains no advertising SDKs, analytics services, crash-reporting
+        services, social media SDKs, or other tracking technologies, and the game
+        server shares no data with third parties. No third party receives data from
+        the game.
+    </p>
+    <p>
+        If you obtain PinoBlu through Google Play, Google may independently process
+        information related to store access, downloads, installation, and device
+        services. This processing is performed by Google, not by PinoBlu, and is
+        governed by the
+        <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[var(--accent-color)] underline underline-offset-2 decoration-2 hover:opacity-80"
+        >Google Privacy Policy</a>.
+    </p>
+
+    <h2>9. Data retention and deletion</h2>
+    <p>
+        Data on your device, including your save file and nickname, stays until you
+        change it, clear the app's storage through Android settings, or uninstall the
+        app. Uninstalling removes all local data.
+    </p>
+    <p>
+        Online match data is temporary and is discarded when you disconnect or when
+        the server restarts. Leaderboard entries, however, persist on the server.
+    </p>
+
+    <h2>10. Your control over your data</h2>
+    <p>Because PinoBlu has no account, you are always in control:</p>
+    <ul>
+        <li>
+            <strong>Change:</strong> pick a different nickname at any time in the game
+        </li>
+        <li>
+            <strong>Delete locally:</strong> clear the app's storage or uninstall the
+            app to remove all on-device data
+        </li>
+    </ul>
+
+    <h2>11. Children's privacy</h2>
+    <p>
+        PinoBlu does not knowingly collect personal information from children. The
+        game has no account system and asks for no personal details beyond a
+        self-chosen nickname. If you believe a child has provided personal information
+        through the game, please contact us and we will remove it.
+    </p>
+
+    <h2>12. Changes to this Privacy Policy</h2>
+    <p>
+        This policy may be updated if PinoBlu's features or data-handling practices
+        change. The current version and its latest revision date will always be
+        published on this page. Material changes may also be communicated through an
+        app update or its Google Play listing.
+    </p>
+
+    <h2>13. Regulatory compliance</h2>
+    <p>PinoBlu is designed to comply with:</p>
+    <ul>
+        <li><strong>GDPR (General Data Protection Regulation)</strong></li>
+        <li><strong>CCPA (California Consumer Privacy Act)</strong></li>
+        <li><strong>Other applicable privacy regulations</strong></li>
+    </ul>
+
+    <div class="my-5 rounded-md border-l-4 border-emerald-500/80 bg-emerald-50/70 dark:bg-emerald-500/10 px-4 py-3 text-emerald-900 dark:text-emerald-200">
+        <strong>Remember:</strong> PinoBlu has no account and collects no personal
+        details. The only information you provide is a nickname you choose, which may
+        be shown to other players and published on public leaderboards.
+    </div>
+</PrivacyLayout>
